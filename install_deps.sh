@@ -2,7 +2,7 @@
 echo "Installing Dependenices for: Abyss Dotfiles by Mystara"
 echo "Installing Pacman available packages"
 
-sudo pacman -Syu waybar neovim wofi
+sudo pacman -Syu waybar neovim wofi hyprpaper hyprlock
 
 echo "Installed Pacman available packages!"
 echo "installing AUR available packages"

@@ -15,7 +15,7 @@ alias la='ls -a'
 # Other Things
 alias pacman='sudo pacman'
 alias vsc='code'
-alias abyssdots='git -C ~/Development/Github/mystara/abyssdots add ~/Development/Github/mystara/abyssdots && git -C ~/Development/Github/mystara/abyssdots commit -m "Push Dotfiles" && git -C ~/Development/Github/mystara/abyssdots push'
+alias abyssdots='git -C ~/Development/Github/mystara/abyssdots add ~/Development/Github/mystara/abyssdots && git -C ~/Development/Github/mystara/abyssdots commit -m "Push Dotfiles (Automated)" && git -C ~/Development/Github/mystara/abyssdots push'
 alias cat='bat'
 alias clearr='clear && $SCRIPTS/customfetch'
 alias ssh='clear && sshtui'

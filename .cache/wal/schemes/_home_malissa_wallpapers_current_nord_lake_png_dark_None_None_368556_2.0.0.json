@@ -1,0 +1,28 @@
+{
+    "checksum": "81aa7f0ac777f23bb4ad3ce93f9052fc",
+    "wallpaper": "/home/malissa/wallpapers/current/nord_lake.png",
+    "alpha": "100",
+    "special": {
+        "background": "#121216",
+        "foreground": "#c3c3c4",
+        "cursor": "#c3c3c4"
+    },
+    "colors": {
+        "color0": "#121216",
+        "color1": "#576F8F",
+        "color2": "#5D7DA4",
+        "color3": "#68819E",
+        "color4": "#5E81AC",
+        "color5": "#6C8EB4",
+        "color6": "#7D9EC1",
+        "color7": "#c3c3c4",
+        "color8": "#5b5b6f",
+        "color9": "#576F8F",
+        "color10": "#5D7DA4",
+        "color11": "#68819E",
+        "color12": "#5E81AC",
+        "color13": "#6C8EB4",
+        "color14": "#7D9EC1",
+        "color15": "#c3c3c4"
+    }
+}

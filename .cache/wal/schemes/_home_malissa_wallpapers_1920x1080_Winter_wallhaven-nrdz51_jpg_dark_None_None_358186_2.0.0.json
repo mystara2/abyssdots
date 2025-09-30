@@ -1,0 +1,28 @@
+{
+    "checksum": "90c2840594d433473a3cb601c34c4e4f",
+    "wallpaper": "/home/malissa/wallpapers/1920x1080/Winter/wallhaven-nrdz51.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#111317",
+        "foreground": "#c3c4c5",
+        "cursor": "#c3c4c5"
+    },
+    "colors": {
+        "color0": "#111317",
+        "color1": "#4D73A5",
+        "color2": "#7C838F",
+        "color3": "#658AB8",
+        "color4": "#6897C9",
+        "color5": "#8A8D95",
+        "color6": "#9AA3B1",
+        "color7": "#c3c4c5",
+        "color8": "#5b6070",
+        "color9": "#4D73A5",
+        "color10": "#7C838F",
+        "color11": "#658AB8",
+        "color12": "#6897C9",
+        "color13": "#8A8D95",
+        "color14": "#9AA3B1",
+        "color15": "#c3c4c5"
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "checksum": "1f5853a7449d45d9311c8f373b564bdb",
+    "wallpaper": "/home/malissa/wallpapers/current/nordtest1.png",
+    "alpha": "100",
+    "special": {
+        "background": "#11151c",
+        "foreground": "#c3c4c6",
+        "cursor": "#c3c4c6"
+    },
+    "colors": {
+        "color0": "#11151c",
+        "color1": "#566E8E",
+        "color2": "#6A778D",
+        "color3": "#5B7DA7",
+        "color4": "#5E81AC",
+        "color5": "#6B88AD",
+        "color6": "#7D9BC2",
+        "color7": "#c3c4c6",
+        "color8": "#5d6371",
+        "color9": "#566E8E",
+        "color10": "#6A778D",
+        "color11": "#5B7DA7",
+        "color12": "#5E81AC",
+        "color13": "#6B88AD",
+        "color14": "#7D9BC2",
+        "color15": "#c3c4c6"
+    }
+}

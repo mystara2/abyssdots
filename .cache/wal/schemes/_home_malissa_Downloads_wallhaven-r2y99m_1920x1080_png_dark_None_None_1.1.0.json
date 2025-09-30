@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/malissa/Downloads/wallhaven-r2y99m_1920x1080.png",
+    "alpha": "100",
+    "special": {
+        "background": "#0d0018",
+        "foreground": "#d6bceb",
+        "cursor": "#d6bceb"
+    },
+    "colors": {
+        "color0": "#0d0018",
+        "color1": "#774F97",
+        "color2": "#7309CB",
+        "color3": "#7D0ADC",
+        "color4": "#8401F3",
+        "color5": "#8E29E2",
+        "color6": "#AC61EC",
+        "color7": "#d6bceb",
+        "color8": "#9583a4",
+        "color9": "#774F97",
+        "color10": "#7309CB",
+        "color11": "#7D0ADC",
+        "color12": "#8401F3",
+        "color13": "#8E29E2",
+        "color14": "#AC61EC",
+        "color15": "#d6bceb"
+    }
+}

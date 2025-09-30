@@ -1,0 +1,62 @@
+@import '/home/malissa/.cache/wal/colors-wofi.css';
+
+* {
+  font-family: monospace;
+  font-size: 14px;
+}
+
+window {
+  margin: 0px;
+  border: 2px solid @color5;
+  background-color: rgba(0, 0, 0, 0.45);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+
+#input {
+  margin: 12px;
+  border: 2px solid @color3;
+  color: @color4;
+  ackground-color: rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+#inner-box {
+  margin: 0px;
+  padding: 8px;
+  border: none;
+  background-color: transparent;
+}
+
+#outer-box {
+  margin: 0px;
+  border: none;
+  background-color: transparent;
+}
+
+#scroll {
+  margin: 0px;
+  border: none;
+}
+
+#text {
+  color: @color7;
+  padding: 2px;
+}
+
+#entry {
+  padding: 10px 12px;
+  margin: 2px 8px;
+  background-color: transparent;
+  border-radius: 6px;
+}
+
+#entry:selected {
+  background-color: @color5;
+  color: @color0;
+}
+
+#entry:hover {
+  background-color: rgba(255, 255, 255, 0.01);
+}

@@ -1,0 +1,23 @@
+" Special
+let wallpaper  = "/home/malissa/wallpapers/1920x1080/Mountains/wallhaven-42kykx.jpg"
+let background = "#0f1124"
+let foreground = "#c3c3c8"
+let cursor     = "#c3c3c8"
+
+" Colors
+let color0  = "#0f1124"
+let color1  = "#5551A7"
+let color2  = "#6E6BCF"
+let color3  = "#837BD8"
+let color4  = "#9A8AB7"
+let color5  = "#A099EF"
+let color6  = "#CBB7F9"
+let color7  = "#c3c3c8"
+let color8  = "#5e6074"
+let color9  = "#5551A7"
+let color10 = "#6E6BCF"
+let color11 = "#837BD8"
+let color12 = "#9A8AB7"
+let color13 = "#A099EF"
+let color14 = "#CBB7F9"
+let color15 = "#c3c3c8"

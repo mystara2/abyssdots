@@ -1,0 +1,28 @@
+{
+    "checksum": "ffeb4c3675a94303afffc62407c077ec",
+    "wallpaper": "/home/malissa/wallpapers/current/nord_valley.png",
+    "alpha": "100",
+    "special": {
+        "background": "#1a1d24",
+        "foreground": "#c5c6c8",
+        "cursor": "#c5c6c8"
+    },
+    "colors": {
+        "color0": "#1a1d24",
+        "color1": "#5E81AC",
+        "color2": "#6D90B2",
+        "color3": "#7DA3C2",
+        "color4": "#8A9DB1",
+        "color5": "#8EBBBB",
+        "color6": "#83A8C3",
+        "color7": "#c5c6c8",
+        "color8": "#626977",
+        "color9": "#5E81AC",
+        "color10": "#6D90B2",
+        "color11": "#7DA3C2",
+        "color12": "#8A9DB1",
+        "color13": "#8EBBBB",
+        "color14": "#83A8C3",
+        "color15": "#c5c6c8"
+    }
+}

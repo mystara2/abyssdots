@@ -1,0 +1,26 @@
+# Hyprland
+alias hyprconfig='cd ~/.config/hypr'
+
+# Packwiz Stuff
+alias pz='packwiz'
+alias pzmrin='packwiz modrinth install'
+alias pzcfin='packwiz curseforge install'
+alias pzr='packwiz refresh'
+# LSD Stuff
+alias ls='lsd'
+alias ll='ls -l'
+alias lla='ls -la'
+alias lt='ls --tree'
+alias la='ls -a'
+# Other Things
+alias pacman='sudo pacman'
+alias vsc='vscodium'
+alias cat='bat'
+alias clearr='clear && $SCRIPTS/customfetch'
+alias ssh='clear && sshtui'
+alias vim='nvim'
+alias makemesshkey='ssh-keygen -t rsa -b 4096'
+alias ambientmu='curl nightfall.ysap.sh | bash'
+alias unmountfusion='umount /mnt/fusion/media && umount /mnt/fusion/storage && umount /mnt/fusion/research'
+
+alias spotdll='clear && spotdl --cookie-file "/home/malissa/Downloads/cookies.txt"'

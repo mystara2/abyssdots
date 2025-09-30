@@ -1,0 +1,28 @@
+{
+    "checksum": "cde38a508948b1f6aad587411d8018d1",
+    "wallpaper": "/home/malissa/wallpapers/1920x1080/Winter/wallhaven-gjp2oe.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#312431",
+        "foreground": "#cbc8cb",
+        "cursor": "#cbc8cb"
+    },
+    "colors": {
+        "color0": "#312431",
+        "color1": "#B4AFCD",
+        "color2": "#CCB4CB",
+        "color3": "#EBB5C6",
+        "color4": "#BCC1DE",
+        "color5": "#BCC8E3",
+        "color6": "#DFD4DA",
+        "color7": "#cbc8cb",
+        "color8": "#806880",
+        "color9": "#B4AFCD",
+        "color10": "#CCB4CB",
+        "color11": "#EBB5C6",
+        "color12": "#BCC1DE",
+        "color13": "#BCC8E3",
+        "color14": "#DFD4DA",
+        "color15": "#cbc8cb"
+    }
+}

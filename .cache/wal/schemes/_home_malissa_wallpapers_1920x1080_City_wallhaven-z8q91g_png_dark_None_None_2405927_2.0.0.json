@@ -1,0 +1,28 @@
+{
+    "checksum": "aaa36f54c060dd515b56d162098cf224",
+    "wallpaper": "/home/malissa/wallpapers/1920x1080/City/wallhaven-z8q91g.png",
+    "alpha": "100",
+    "special": {
+        "background": "#0a0c19",
+        "foreground": "#c1c2c5",
+        "cursor": "#c1c2c5"
+    },
+    "colors": {
+        "color0": "#0a0c19",
+        "color1": "#2C45A2",
+        "color2": "#0972CB",
+        "color3": "#CF6D96",
+        "color4": "#579CB7",
+        "color5": "#298AD9",
+        "color6": "#5A9DE9",
+        "color7": "#c1c2c5",
+        "color8": "#595d6e",
+        "color9": "#2C45A2",
+        "color10": "#0972CB",
+        "color11": "#CF6D96",
+        "color12": "#579CB7",
+        "color13": "#298AD9",
+        "color14": "#5A9DE9",
+        "color15": "#c1c2c5"
+    }
+}

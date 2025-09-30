@@ -1,0 +1,28 @@
+{
+    "checksum": "29f754980d482bc127a688f1cf4650c4",
+    "wallpaper": "/home/malissa/wallpapers/current/wallhaven-z88dww.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#131025",
+        "foreground": "#c4c3c8",
+        "cursor": "#c4c3c8"
+    },
+    "colors": {
+        "color0": "#131025",
+        "color1": "#C56E63",
+        "color2": "#2A3A92",
+        "color3": "#374499",
+        "color4": "#1046AC",
+        "color5": "#3450B1",
+        "color6": "#4650A5",
+        "color7": "#c4c3c8",
+        "color8": "#625f74",
+        "color9": "#C56E63",
+        "color10": "#2A3A92",
+        "color11": "#374499",
+        "color12": "#1046AC",
+        "color13": "#3450B1",
+        "color14": "#4650A5",
+        "color15": "#c4c3c8"
+    }
+}

@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+#
+# Written by ClaudeAI, then ~76% edited by Mystara
+#
+
+CONFIG_FILE="$HOME/main_configuration.yml"
+[ ! -f "$CONFIG_FILE" ] && exit 1
+
+FZF_OPTS="--height=40% --border=rounded --layout=reverse --ansi"
+
+while true; do
+    mapfile -t TOPLEVEL < <(yq e '.[] | to_entries[] | .key' "$CONFIG_FILE")
+    TOPCHOICE=$(printf "%s\n" "${TOPLEVEL[@]}" | fzf --prompt="Pick > " $FZF_OPTS)
+    [ -z "$TOPCHOICE" ] && exit 0
+    
+    TYPE=$(yq e ".[] | select(has(\"$TOPCHOICE\")) | .[\"$TOPCHOICE\"] | type" "$CONFIG_FILE")
+    
+    if [[ "$TYPE" == "!!seq" ]]; then
+        while true; do
+            mapfile -t CHILD_NAMES < <(yq e ".[] | select(has(\"$TOPCHOICE\")) | .[\"$TOPCHOICE\"][] | to_entries[] | select(.value.name) | .value.name" "$CONFIG_FILE")
+            CHILD_NAME=$(printf "%s\n" "${CHILD_NAMES[@]}" | fzf --prompt="Pick config in $TOPCHOICE > " $FZF_OPTS)
+            
+            if [ -z "$CHILD_NAME" ]; then
+                break
+            fi
+            
+            CHILD_KEY=$(yq e ".[] | select(has(\"$TOPCHOICE\")) | .[\"$TOPCHOICE\"][] | to_entries[] | select(.value.name == \"$CHILD_NAME\") | .key" "$CONFIG_FILE")
+            PATH_TO_OPEN=$(yq e ".[] | select(has(\"$TOPCHOICE\")) | .[\"$TOPCHOICE\"][] | select(has(\"$CHILD_KEY\")) | .[\"$CHILD_KEY\"].conf" "$CONFIG_FILE")
+            PATH_TO_OPEN="${PATH_TO_OPEN/#\~/$HOME}"
+            "${EDITOR:-nvim}" "$PATH_TO_OPEN"
+            exit 0
+        done
+    else
+        PATH_TO_OPEN=$(yq e ".[] | select(has(\"$TOPCHOICE\")) | .[\"$TOPCHOICE\"].conf" "$CONFIG_FILE")
+        PATH_TO_OPEN="${PATH_TO_OPEN/#\~/$HOME}"
+        "${EDITOR:-nvim}" "$PATH_TO_OPEN"
+        exit 0
+    fi
+done

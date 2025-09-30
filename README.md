@@ -1,4 +1,4 @@
-
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Lato&size=48&letterSpacing=3&pause=1000&color=6624F7&center=true&vCenter=true&width=650&height=60&lines=Abyss+Dotfiles)](https://git.io/typing-svg)
 ---
 
 ### Information

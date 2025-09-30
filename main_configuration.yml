@@ -1,0 +1,64 @@
+# Not Grouped
+- Edit main config:
+    name: Configure the TUI
+    internalname: tuiconfig
+    conf: ~/main_configuration.yml
+
+# Groups
+- Hyprland:
+  - Hypr Keybinds:
+      name: Configure Keybinds
+      internalname: hyprkeybinds
+      conf: ~/.config/hypr/configs/keybinds.conf
+  - Hypr Monitors:
+      name: Configure Monitors
+      internalname: monitorconf
+      conf: ~/.config/hypr/configs/monitors.conf
+  - Window Rules:
+      name: Configure Window Rules
+      internalname: windowrules
+      conf: ~/.config/hypr/configs/windowrules.conf
+  - Hyprland:
+      name: Configure Hyprland
+      internalname: mainhyprland
+      conf: ~/.config/hypr/hyprland.conf
+  - Hyprlock:
+      name: Configure Hyprlock
+      internalname: hyprlock
+      conf: ~/.config/hypr/hyprlock.conf
+
+- Miscellanous:
+  - Waypaper:
+      name: Configure Waypaper
+      internalname: Waypaper
+      conf: ~/.config/waypaper/config.ini
+  - Fastfetch:
+      name: Configure Fastfetch
+      internalname: fastfetch
+      conf: ~/.config/fastfetch/config.jsonc
+  - Zshrc:
+      name: Configure Zshrc
+      internalname: zshrc
+      conf: ~/.zshrc
+  - Zshalias:
+      name: Configure Zshalias
+      internalname: zshalias
+      conf: ~/.zshalias
+- Waybar:
+  - config:
+      name: Configure Waybar Config
+      internalname: waybarconf
+      conf: ~/.config/waybar/config.jsonc
+  - css:
+      name: Configure Waybar CSS
+      internalname: waybarcss
+      conf: ~/.config/waybar/style.css
+- Swaync:
+  - config:
+      name: Configure Swaync Config
+      internalname: swayncconf
+      conf: ~/.config/swaync/config.json
+  - css:
+      name: Configure Swaync CSS
+      internalname: swaynccss
+      conf: ~/.config/swaync/style.css

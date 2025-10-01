@@ -13,7 +13,7 @@
   - Hypr Monitors:
       name: Configure Monitors
       internalname: monitorconf
-      conf: ~/.config/hypr/configs/monitors.conf
+      conf: ~/.config/hypr/pconfigs/monitors.conf
   - Window Rules:
       name: Configure Window Rules
       internalname: windowrules

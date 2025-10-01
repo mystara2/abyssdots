@@ -6,26 +6,51 @@
 
 # Groups
 - Hyprland:
-  - Hypr Keybinds:
-      name: Configure Keybinds
-      internalname: hyprkeybinds
-      conf: ~/.config/hypr/configs/keybinds.conf
-  - Hypr Monitors:
+  - Configs:
+    - Keybinds:
+        name: Configure Keybinds
+        internalname: hyprkeybinds
+        conf: ~/.config/hypr/configs/keybinds.conf
+    - Window Rules:
+        name: Configure Window Rules
+        internalname: windowrules
+        conf: ~/.config/hypr/configs/windowrules.conf
+    - Look n Feel:
+        name: Configure Look n Feel
+        internalname: looknfeel
+        conf: ~/.config/hypr/configs/looknfeel.conf
+    - Environment:
+        name: Configure Environment
+        internalname: environment
+        conf: ~/.config/hypr/configs/env.conf
+    - Layer Rules:
+        name: Configure Layer Rules
+        internalname: layerrules
+        conf: ~/.config/hypr/configs/layerrules.conf
+    - Workspaces:
+        name: Configure Workspaces
+        internalname: workspaces
+        conf: ~/.config/hypr/configs/workspaces.conf
+    - Input:
+        name: Configure Input
+        internalname: input
+        conf: ~/.config/hypr/configs/input.conf
+    - Autostart:
+        name: Configure Autostart Applications
+        internalname: autostartapp
+        conf: ~/.config/hypr/configs/autostart.conf
+  - Monitors:
       name: Configure Monitors
       internalname: monitorconf
       conf: ~/.config/hypr/pconfigs/monitors.conf
-  - Window Rules:
-      name: Configure Window Rules
-      internalname: windowrules
-      conf: ~/.config/hypr/configs/windowrules.conf
-  - Hyprland:
-      name: Configure Hyprland
-      internalname: mainhyprland
-      conf: ~/.config/hypr/hyprland.conf
   - Hyprlock:
       name: Configure Hyprlock
       internalname: hyprlock
       conf: ~/.config/hypr/hyprlock.conf
+  - Hyprland:
+      name: Configure Hyprland
+      internalname: mainhyprland
+      conf: ~/.config/hypr/hyprland.conf
 
 - Miscellanous:
   - Waypaper:
@@ -44,6 +69,7 @@
       name: Configure Zshalias
       internalname: zshalias
       conf: ~/.zshalias
+
 - Waybar:
   - config:
       name: Configure Waybar Config
@@ -53,6 +79,7 @@
       name: Configure Waybar CSS
       internalname: waybarcss
       conf: ~/.config/waybar/style.css
+
 - Swaync:
   - config:
       name: Configure Swaync Config

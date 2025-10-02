@@ -41,3 +41,4 @@ bindkey "^[[1;5A" forward-word
 bindkey "^[[1;5B" backward-word
 
 eval "$(starship init zsh)"
+source ~/.cache/wal/colors.sh

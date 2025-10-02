@@ -1,0 +1,100 @@
+{
+    "layer": "bottom",
+    "height": 38,
+    "reload_style_on_change": true,
+    "modules-left": [
+        "custom/slant",
+        "hyprland/workspaces",
+        "custom/slant1",
+        "custom/slant3",
+        "hyprland/window",
+        "custom/slant"
+    ],
+    "modules-center": [
+        "custom/slant",
+        "clock#1",
+        "custom/slant"
+    ],
+    "modules-right": [
+        "custom/slant", 
+        "clock#2", 
+        "custom/slant1", 
+        "custom/slant3",
+        "cpu",
+        "memory",
+        "pulseaudio",
+        "custom/slant1", 
+        "custom/slant3",
+        "custom/notification",
+        "custom/power"
+    ],
+    "hyprland/workspaces": {
+        "disaable-scroll": true,
+        "all-outputs": true,
+        "format": "{name}"
+    },
+    "tray": {
+        "show-pasive-items": true,
+        "spacing": 5
+    },
+    "clock#1": {
+        "tooltip-format": "{:%Y-%m-%d | %H:%M}"
+    },
+	"clock#2": {
+		"format": "{:%d. %B %Y}"
+	},
+    "cpu": {
+        "format": "{usage}%  ",
+        "on-click": "alacritty -e htop"
+    },
+    "memory": {
+        "format": "{}%  ",
+	    "on-click": "alacritty -e htop"
+    },
+    "pulseaudio": {
+        "scroll-step": 5,
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-muted": "",
+        "format-icons": {
+            "headphones": "",
+            "handsfree": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+    "custom/slant": {
+        "format": "  "
+    },
+    "custom/slant1": {
+        "format": " "
+    },
+    "custom/slant2": {
+        "format": " "
+    },
+    "custom/slant3": {
+        "format": ""
+    },
+  "custom/power": {
+    "tooltip": false,
+    "on-click": "wlogout -p layer-shell &",
+    "format": "⏻"
+  },
+  "custom/notification": {
+    "escape": true,
+    "exec": "swaync-client -swb",
+    "exec-if": "which swaync-client",
+    "format": "{icon}",
+    "format-icons": {
+      "none": "󰅺",
+      "notification": "󰡟"
+    },
+    "on-click": "sleep 0.1 && swaync-client -t -sw",
+    "return-type": "json",
+    "tooltip": false
+  }
+}

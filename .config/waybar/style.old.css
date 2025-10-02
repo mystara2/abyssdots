@@ -1,0 +1,81 @@
+@import url("/home/malissa/.cache/wal/colors-waybar.css");
+
+* {
+    border: none;
+    border-radius: 0;
+  font-family: Lexend, "JetBrainsMono NFP";
+    font-size: 14px;
+    min-height: 0;
+}
+
+window#waybar {
+    transition-property: background-color;
+    transition-duration: 0.5s;
+    background-color: transparent;
+
+}
+
+#custom-slant,
+#custom-slant1,
+#custom-slant2,
+#custom-slant3 {
+    color: @color12;
+    font-size: 24px;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    background: @color0;
+    color: @foreground;
+}
+#workspaces button.focused {
+    color: @color1;
+}
+
+#workspaces button.urgent {
+  background-color: @color12;
+  color: @color1;
+}
+
+
+#clock,
+#custom-logo,
+#custom-power,
+#custom-notification,
+#cpu,
+#tray,
+#memory,
+#pulseaudio,
+#window {
+  padding: 0.3rem 0.6rem;
+  margin: 0.4rem 0.25rem;
+  border-radius: 6px;
+  background-color: @color0;
+}
+
+
+#cpu {
+    margin-right: 0;
+    border-radius: 6px 0 0 6px;
+}
+
+#memory {
+    margin-left: -16;
+    border-radius: 0;
+}
+
+
+#pulseaudio {
+    margin-left: -16;
+    border-radius: 0 6px 6px 0;
+}
+
+#custom-notification {
+    margin-left: 1;
+    border-radius: 6px 0 0 6px;
+}
+
+#custom-power {
+    margin-left: -3;
+    border-radius: 0px 6px 6px 0;
+}

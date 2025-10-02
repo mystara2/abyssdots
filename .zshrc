@@ -1,10 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~//.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # Paths & Exports
 export SCRIPTS="$HOME/scripts"
 export PATH="$PATH:$SCRIPTS"
@@ -13,7 +6,6 @@ export JAVA_HOME=$HOME/java/adoptium/jdk/17
 export PATH=$JAVA_HOME/bin:$PATH
 export EDITOR=nvim
 export GIT_EDITOR=nvim
-#export HYPRSHOT_DIR=/home/malissa/Pictures/Screenshots
 export HYPRSHOT_DIR="$HOME/Pictures/Screenshots/$(date +%Y)/$(date +%B)"
 mkdir -p "$HYPRSHOT_DIR"
 HISTFILE=~/.zsh_history
@@ -48,10 +40,4 @@ bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5A" forward-word
 bindkey "^[[1;5B" backward-word
 
-source ~/powerlevel10k/powerlevel10k.zsh-theme
-
-# To customize prompt, run `p10k configure` or edit ~//.p10k.zsh.
-[[ ! -f ~//.p10k.zsh ]] || source ~//.p10k.zsh
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+eval "$(starship init zsh)"

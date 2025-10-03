@@ -41,4 +41,7 @@ bindkey "^[[1;5A" forward-word
 bindkey "^[[1;5B" backward-word
 
 eval "$(starship init zsh)"
-source ~/.cache/wal/colors.sh
+
+if [[ -o interactive ]] && [[ -n $DISPLAY || -n $WAYLAND_DISPLAY ]] && [[ -f ~/.cache/wal/colors.sh ]]; then
+    source ~/.cache/wal/colors.sh
+fi

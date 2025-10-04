@@ -7,6 +7,9 @@ export PATH=$JAVA_HOME/bin:$PATH
 export EDITOR=nvim
 export GIT_EDITOR=nvim
 export HYPRSHOT_DIR="$HOME/Pictures/Screenshots/$(date +%Y)/$(date +%B)"
+export TERM_USER="${TERM_USER:-$USER}"
+export TERM_USER="Melissa"
+
 mkdir -p "$HYPRSHOT_DIR"
 HISTFILE=~/.zsh_history
 HISTSIZE=5000

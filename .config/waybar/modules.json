@@ -34,7 +34,8 @@
             "pulseaudio",
             "bluetooth",
             "custom/ddc_brightness",
-            "network"
+            "network",
+            "cpu",
          ]
     },
 
@@ -42,7 +43,6 @@
         "orientation": "horizontal",
         "modules": [
             "custom/updates",
-            "custom/mako",
             "custom/copyq",
             "custom/power"
          ]
@@ -94,7 +94,7 @@
     },
 
     "custom/media": {
-        "format": " Now Playing  ",
+        "format": "  Media  ",
         "tooltip": false
     },
     "custom/filemanager": {
@@ -227,7 +227,8 @@
         "separate-outputs": true,
         "max-length": 1000,
         "rewrite": {
-            "(.*) - Discord": "   Discord"
+            "(.*) - Discord": "   Discord",
+            ".*Zen Browser.*": "󰈹   Zen Browser"
         }
     },
 

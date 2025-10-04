@@ -47,6 +47,10 @@
       name: Configure Hyprlock
       internalname: hyprlock
       conf: ~/.config/hypr/hyprlock.conf
+  - Hyprpaper:
+      name: Configure Hyprpaper
+      internalname: hyprpaper
+      conf: ~/.config/hypr/hyprpaper.conf
   - Hyprland:
       name: Configure Hyprland
       internalname: mainhyprland
@@ -74,7 +78,11 @@
   - config:
       name: Configure Waybar Config
       internalname: waybarconf
-      conf: ~/.config/waybar/config.jsonc
+      conf: ~/.config/waybar/config
+  - modules:
+      name: Configure Waybar modules
+      internalname: waybarmod
+      conf: ~/.config/waybar/modules.json
   - css:
       name: Configure Waybar CSS
       internalname: waybarcss

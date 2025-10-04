@@ -8,7 +8,6 @@
 	}
 }
 
-/* Reset all styles */
 * {
 	border: none;
 	border-radius: 0;
@@ -29,18 +28,11 @@
 }
 
 /* Each module */
-#clock,
-#cpu,
-#language,
-#memory,
-#mode,
-#pulseaudio,
-#temperature,
+#group-power,
+#group-system,
+#group-time,
 #tray,
-#backlight,
-#idle_inhibitor,
 #disk,
-#user,
 #mpris {
 	padding-left: 20pt;
 	padding-right: 20pt;

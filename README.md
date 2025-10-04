@@ -15,3 +15,7 @@
 ***Contributions:***
 ***Open to help when it comes to scripts n stuff, and if config is hardcoding my stuff explicitly (ex /home/malissa and not $HOME or ~), otherwise PRs or issues will be closed.***
 
+
+***Attributions:***
+* Avnibilgin: Base waybar configuration
+* Claude: fixing my stupid script mistakes lol *crazy i know, but eh*

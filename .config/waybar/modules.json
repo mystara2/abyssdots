@@ -221,7 +221,10 @@
     "hyprland/window": {
         "format": "  {}",
         "separate-outputs": true,
-        "max-length": 1000
+        "max-length": 1000,
+        "rewrite": {
+            "(.*) - Discord": "   Discord"
+        }
     },
 
     "hyprland/workspaces": {

@@ -1,9 +1,7 @@
 @import '../../.cache/wal/colors-waybar.css';
 
 /*
-    ┏┓┓ ┏┳┓  ┏┓┏┓┓ ┏┓┳┓┏┓
-    ┃┃┃┃┃┃┃  ┃ ┃┃┃ ┃┃┣┫┗┓
-    ┗┛┗┻┛┛┗  ┗┛┗┛┗┛┗┛┛┗┗┛
+Colors
 */
 
 /* waybar area/group colors*/
@@ -31,9 +29,7 @@
 @define-color updates_red #dc2f2f;
 
 /*
-    ┏┓┏┓┳┓┏┓┳┓┏┓┓
-    ┃┓┣ ┃┃┣ ┣┫┣┫┃
-    ┗┛┗┛┛┗┗┛┛┗┛┗┗┛
+Waybar / main settings
 */
 
 * {
@@ -56,23 +52,18 @@ tooltip {
 }
 
 /*
-    ┓ ┏┏┓┳┓┓┏┓┏┓┏┓┏┓┏┓┏┓┏┓
-    ┃┃┃┃┃┣┫┃┫ ┗┓┃┃┣┫┃ ┣ ┗┓
-    ┗┻┛┗┛┛┗┛┗┛┗┛┣┛┛┗┗┛┗┛┗┛
+Workspaces
 */
 
 #workspaces {
     padding: 4px 10px;
-
+    background: @workspaces;
 }
 
-/* ALL workspace buttons (Focused + Unfocused) */
-#workspaces button:hover {
-}
+#workspaces button:hover {}
 
-/* Only focused workspace*/
 #workspaces button.active {
-    color:  @act_wrk_fg;
+    color: @act_wrk_fg;
     background: @act_wrk_bg;
     border: none;
     padding: 1px 2px;
@@ -80,9 +71,6 @@ tooltip {
     transition: all 0.3s ease-in-out;
 }
 
-/* Unfocused workspace WITH opened Apps
-   !!! Border style is valid for ALL buttons,
-   Set seperate border style for every button. */
 #workspaces button {
     color: @workspace_fg;
     background: @workspace_bg;
@@ -98,55 +86,20 @@ tooltip {
 }
 
 /*
-   OTHER POSSIBLE DESIGN-ATTRIBUTES:
-      #workspaces button.empty
-      #workspaces button.persistent
-      #workspaces button:not(.persistent)
-      #workspaces button:not(.active) usw.
-*/
-
-/*
-   ┏┳┓┏┓┏┓┓┏┓┳┓┏┓┳┓
-    ┃ ┣┫┗┓┃┫ ┣┫┣┫┣┫
-    ┻ ┛┗┗┛┛┗┛┻┛┛┗┛┗
-*/
-
-/*
-#taskbar.empty {
-    background: transparent;
-}
-*/
-
-#taskbar {
-    padding: 4px 10px;
-}
-
-#taskbar button {
-    padding: 1px 4px;
-    margin: 0px 4px;
-}
-
-#taskbar button.active {
-    background: @taskbar_bg;
-    border-radius: 5;
-    transition: all 0.3s ease-in-out;
-}
-
-#taskbar button:hover {
-    border-radius: 5;
-    transition: all 0.3s ease-in-out;
-}
-
-/*
-    ┏┓┏┳┓┓┏┏┓┳┓
-    ┃┃ ┃ ┣┫┣ ┣┫
-    ┗┛ ┻ ┛┗┗┛┛┗
+Other
 */
 
 #window {
     color: @workspace_fg;
     background: @workspace_bg;
 }
+
+#mpris, #custom-media {
+    color: @workspace_fg;
+    background: @taskbar;
+}
+
+
 
 #clock {
     font-family: "Futura Bk BT";
@@ -159,16 +112,22 @@ tooltip {
     opacity: 1;
 }
 
-#custom-timer {
-    padding: 2px 10px 0px 10px;
-    min-width: 30px;
+#misc {
+    background: @misc;
 }
 
-/*
+#devices {
+    background: @devices;
+}
+
+#system {
+    background: @system;
+}
+
 #custom-updates.green {
     color: @updates_green;
 }
-*/
+
 
 #custom-updates.yellow {
     color: @updates_yellow;
@@ -185,176 +144,122 @@ tooltip {
 */
 
 /* inactiv widget modules */
-#cpu, #memory, #mpris, #custom-spotify, #custom-mode, #custom-gpuinfo, #custom-ddcutil,
+#cpu,
+#memory,
+#mpris,
 /* group "system" widgets */
-#custom-updates, #custom-power, #custom-copyq, #custom-mako,
+#custom-updates,
+#custom-power,
+#custom-copyq,
 /* group "devices" widgets */
-#bluetooth, #pulseaudio, #wireplumber, #network, #custom-ddc_brightness, #custom-screenrecorder,
+#bluetooth,
+#pulseaudio,
+#wireplumber,
+#network,
 /* group "misc" widgets */
-#custom-screenrecorder, #custom-misc, #idle_inhibitor,
-/* group "quicklinks" widgets */
-#custom-filemanager, #custom-browser, #custom-terminal, #custom-editor, #custom-obsidian,
+#custom-misc,
 /* groups + custom-appmenu */
-#custom-appmenu, #quicklinks, #window, #misc, #devices, #system {
+#window,
+#misc,
+#devices,
+#system {
     padding: 0px 10px;
 }
 
 /*
-    ┏┓┏┓┓ ┏┏┓┳┓┓ ┳┳┓┏┓  ┳┳┓┏┓┳┓┳┳
-    ┃┃┃┃┃┃┃┣ ┣┫┃ ┃┃┃┣   ┃┃┃┣ ┃┃┃┃
-    ┣┛┗┛┗┻┛┗┛┛┗┗┛┻┛┗┗┛  ┛ ┗┗┛┛┗┗┛
+Powerline Menu
 */
 
-#l-window, #r-window, #l-apps, #r-apps, #l-quicklinks, #r-quicklinks, #l-workspaces, #r-workspaces, #l-taskbar, #r-taskbar, #l-misc, #r-misc, #l-timer, #r-timer, #l-devices, #r-devices, #l-system, #r-system {
-background: transparent;
-min-height:0px;
+#l-window,
+#r-window,
+#l-workspaces,
+#r-workspaces,
+#l-misc,
+#r-misc,
+#l-media,
+#r-media,
+#l-devices,
+#r-devices,
+#l-system,
+#r-system {
+    background: transparent;
+    min-height: 0px;
 }
 
+/* Left side slashes */
+
 #l-window {
-border-left: 15 solid transparent;
-border-bottom: 30 solid @apps;
-margin-left:0;
+    border-left: 15 solid transparent;
+    border-bottom: 30 solid @apps;
+    margin-left: 0;
+}
+
+#l-workspaces {
+    border-left: 15 solid transparent;
+    border-bottom: 30 solid @workspaces;
+    margin-left: 0;
+}
+
+#l-misc {
+    border-left: 15 solid transparent;
+    border-bottom: 30 solid @misc;
+    margin-left: 0;
+}
+
+#l-media {
+    border-left: 15 solid transparent;
+    border-bottom: 30 solid @misc;
+    margin-left: 0;
+}
+
+#l-devices {
+    border-left: 15 solid transparent;
+    border-bottom: 30 solid @devices;
+    margin-left: 0;
+}
+
+#l-system {
+    border-left: 15 solid transparent;
+    border-bottom: 30 solid @system;
+    margin-left: 0;
+}
+
+/* Right side slashes */
+
+#r-misc {
+    border-left: 15 solid @misc;
+    border-bottom: 30 solid transparent;
+    margin-right: 0;
+}
+
+#r-media {
+    border-left: 15 solid @misc;
+    border-bottom: 30 solid transparent;
+    margin-right: 0;
 }
 
 #r-window {
-border-left: 15 solid @apps;
-border-bottom: 30 solid transparent;
-margin-right:0;
-}
-
-/*
-    ┓ ┏┏┓┳┓┓┏┓┏┓┏┓┏┓┏┓┏┓┏┓
-    ┃┃┃┃┃┣┫┃┫ ┗┓┃┃┣┫┃ ┣ ┗┓
-    ┗┻┛┗┛┛┗┛┗┛┗┛┣┛┛┗┗┛┗┛┗┛
-*/
-
-#l-workspaces {
-border-left: 15 solid transparent;
-border-bottom: 30 solid @workspaces;
-margin-left:0;
+    border-left: 15 solid @apps;
+    border-bottom: 30 solid transparent;
+    margin-right: 0;
 }
 
 #r-workspaces {
-border-left: 15 solid @workspaces;
-border-bottom: 30 solid transparent;
-margin-right:0;
-}
-
-#workspaces {
-background: @workspaces;
-}
-
-/*
-   ┏┳┓┏┓┏┓┓┏┓┳┓┏┓┳┓
-    ┃ ┣┫┗┓┃┫ ┣┫┣┫┣┫
-    ┻ ┛┗┗┛┛┗┛┻┛┛┗┛┗
-*/
-
-#l-taskbar {
-border-left: 15 solid transparent;
-border-bottom: 30 solid @taskbar;
-margin-left:0;
-}
-
-#r-taskbar {
-border-left: 15 solid @taskbar;
-border-bottom: 30 solid transparent;
-margin-right:-15;
-}
-
-#taskbar {
-background: @taskbar;
-}
-
-/*
-    ┳┳┓┳┏┓┏┓
-    ┃┃┃┃┗┓┃
-    ┛ ┗┻┗┛┗┛
-*/
-
-#l-misc {
-border-left: 15 solid transparent;
-border-bottom: 30 solid @misc;
-margin-left:0;
-}
-
-#r-misc {
-border-left: 15 solid @misc;
-border-bottom: 30 solid transparent;
-margin-right:0;
-}
-
-#misc {
-background: @misc;
-}
-
-/*
-   ┏┳┓┳┳┳┓┏┓┳┓
-    ┃ ┃┃┃┃┣ ┣┫
-    ┻ ┻┛ ┗┗┛┛┗
-*/
-
-#l-timer {
-border-left: 15 solid transparent;
-border-bottom: 30 solid @timer;
-margin-left:0;
-}
-
-#r-timer {
-border-left: 15 solid @timer;
-border-bottom: 30 solid transparent;
-margin-right:-15;
-}
-
-/*
-#custom-timer {
-background: @timer;
-}
-*/
-
-/*
-    ┳┓┏┓┓┏┳┏┓┏┓┏┓
-    ┃┃┣ ┃┃┃┃ ┣ ┗┓
-    ┻┛┗┛┗┛┻┗┛┗┛┗┛
-*/
-
-#l-devices {
-border-left: 15 solid transparent;
-border-bottom: 30 solid @devices;
-margin-left:0;
+    border-left: 15 solid @workspaces;
+    border-bottom: 30 solid transparent;
+    margin-right: 0;
 }
 
 #r-devices {
-border-left: 15 solid @devices;
-border-bottom: 30 solid transparent;
-margin-right:0;
+    border-left: 15 solid @devices;
+    border-bottom: 30 solid transparent;
+    margin-right: 0;
 }
 
-#devices {
-background: @devices;
-}
-
-/*
-    ┏┓┓┏┏┓┏┳┓┏┓┳┳┓
-    ┗┓┗┫┗┓ ┃ ┣ ┃┃┃
-    ┗┛┗┛┗┛ ┻ ┗┛┛ ┗
-*/
-
-#l-system {
-border-left: 15 solid transparent;
-border-bottom: 30 solid @system;
-margin-left:0;
-}
-
-/*  Not necessary because last widget. Removed from (config)
-    modules so bar is flush with right edge of monitor.  */
-
+/* 
 #r-system {
 border-left: 15 solid @system;
 border-bottom: 30 solid transparent;
 margin-right:0;
 }
-
-#system {
-background: @system;
-}
+*/

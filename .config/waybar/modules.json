@@ -5,6 +5,17 @@
         "custom/timer"
          ]
     },
+    "group/media": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 500,
+            "transition-right-to-left": false
+        },
+        "modules": [
+            "custom/media",
+            "mpris"
+        ]
+    },
     "group/misc": {
         "orientation": "inherit",
         "drawer": {
@@ -56,17 +67,6 @@
 
     "include": ["~/.config/waybar/dcol_modules/clock.json"],
 
-    "custom/timer": {
-        "align": 0,
-        "tooltip": false,
-        "on-click": "date --date='30 minutes' +%s > /var/tmp/waybar_timer",
-        "on-click-right": "echo READY > /var/tmp/waybar_timer",
-        "on-click-middle": "date --date='45 minute' +%s > /var/tmp/waybar_timer",
-        "on-scroll-up": "$HOME/.config/hypr/scripts/waybar-timer-steps.sh up",
-        "on-scroll-down": "$HOME/.config/hypr/scripts/waybar-timer-steps.sh down",
-        "interval": 1
-    },
-
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
@@ -93,6 +93,10 @@
         "tooltip": false
     },
 
+    "custom/media": {
+        "format": " Now Playing  ",
+        "tooltip": false
+    },
     "custom/filemanager": {
         "format": " ",
         "on-click": "dolphin",

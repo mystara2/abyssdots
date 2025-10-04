@@ -22,7 +22,10 @@
 	"modules-left": [
         "clock",
         "hyprland/workspaces",
-        "group/r-workspaces"
+        "group/r-workspaces",
+        "group/l-media",
+        "group/media",
+        "group/r-media"
     ],
 
 	"modules-center": [

@@ -1,0 +1,21 @@
+# Load
+
+setopt prompt_subst
+autoload -Uz vcs_info
+
+# Style
+
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:*' formats ' %F{blue} %b%f %m%u%c %a'
+zstyle ':vcs_info:*' check-for-changes true 
+zstyle ':vcs_info:*' stagedstr ' %F{green}✚%f'
+zstyle ':vcs_info:*' unstagedstr ' %F{red}●%f'
+
+#Prompt itself
+
+precmd() {
+  vcs_info
+  print -P "%F{${color1}}%~ %f ${vcs_info_msg_0_}"
+}
+
+PROMPT='%F{${color5}}󰅂%f '

@@ -1,0 +1,19 @@
+# Keys, import last
+bindkey "\e[H" beginning-of-line
+bindkey "\e[F" end-of-line
+# Shift+Arrow
+bindkey "^[[1;2D" backward-word
+bindkey "^[[1;2C" forward-word
+bindkey "^[[1;2A" forward-word
+bindkey "^[[1;2B" backward-word
+
+# Alt+Arrow
+bindkey "^[[1;3D" backward-word
+bindkey "^[[1;3C" forward-word
+bindkey "^[[1;3A" forward-word
+bindkey "^[[1;3B" backward-word
+# Ctrl+Arrow
+bindkey "^[[1;5D" backward-word
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5A" forward-word
+bindkey "^[[1;5B" backward-word

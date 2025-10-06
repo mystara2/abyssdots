@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+#
+# Originally built by a friend (possibly used AI for it idk), modified for my use
+#
+
 printf '\033]0;SSH Manager\007'
 
 declare -A file_hosts

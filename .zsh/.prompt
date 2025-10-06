@@ -15,7 +15,7 @@ zstyle ':vcs_info:*' unstagedstr ' %F{red}●%f'
 
 precmd() {
   vcs_info
-  print -P "%F{${color1}}%~ %f ${vcs_info_msg_0_}"
+  print -P "%F{red}%~ %f ${vcs_info_msg_0_}"
 }
 
 PROMPT='%F{${color5}}󰅂%f '

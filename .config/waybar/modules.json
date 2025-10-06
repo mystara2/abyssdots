@@ -172,7 +172,7 @@
     "pulseaudio": {
         "format": "{icon} {volume}%",
         "format-muted": "",
-        "on-click-right": "pavucontrol-qt",
+        "on-click-right": "pavucontrol",
         "tooltip-format": "{icon} {desc}",
         "format-icons": {
             "headphone": ["", "", ""],

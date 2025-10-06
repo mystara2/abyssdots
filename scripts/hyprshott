@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 output_base="~/Pictures/Screenshots"
 year=$(date +'%Y')
 month=$(date +'%B')

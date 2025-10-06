@@ -8,4 +8,4 @@ random=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 6)
 filename="$year/$month/${timestamp}-${random}.png"
 
 mkdir -p "$output_base/$year/$month"
-hyprshot -f "$filename" -m region -o "$output_base"
+hyprshot -z -f "$filename" -m region -o "$output_base"

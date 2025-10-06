@@ -1,0 +1,207 @@
+#!/usr/bin/env bash
+
+#
+# Originally built by a friend (possibly used AI for it idk), modified for my use
+#
+
+printf '\033]0;SSH Manager\007'
+
+declare -A file_hosts
+
+parse_ssh_configs() {
+    if [[ -d "$HOME/.ssh/config.d" ]]; then
+        while IFS= read -r file; do
+            local basename=$(basename "$file")
+            local hosts=()
+            while IFS= read -r line; do
+                if [[ $line =~ ^[[:space:]]*Host[[:space:]]+([^*?]+)[[:space:]]*$ ]]; then
+                    local host="${BASH_REMATCH[1]}"
+                    hosts+=("$host")
+                fi
+            done < "$file"
+            if [[ ${#hosts[@]} -gt 0 ]]; then
+                file_hosts["$basename"]="${hosts[*]}"
+            fi
+        done < <(find "$HOME/.ssh/config.d" -type f 2>/dev/null | sort)
+    fi
+    
+    if [[ -f "$HOME/.ssh/config" ]]; then
+        local hosts=()
+        while IFS= read -r line; do
+            if [[ $line =~ ^[[:space:]]*Host[[:space:]]+([^*?]+)[[:space:]]*$ ]]; then
+                hosts+=("${BASH_REMATCH[1]}")
+            fi
+        done < "$HOME/.ssh/config"
+        [[ ${#hosts[@]} -gt 0 ]] && file_hosts["config"]="${hosts[*]}"
+    fi
+}
+
+parse_ssh_configs
+
+if [[ ${#file_hosts[@]} -eq 0 ]]; then
+    echo "No SSH hosts found"
+    exit 1
+fi
+
+selected=0
+filter=""
+view="groups"
+current_group=""
+
+trap 'stty sane; clear' EXIT INT TERM
+
+while true; do
+    clear
+    printf '\e[35m╔══════════════════════════════════════════════════════════╗\e[0m\n'
+    printf '\e[35m║                      SSH Manager                         ║\e[0m\n'
+    printf '\e[35m╚══════════════════════════════════════════════════════════╝\e[0m\n'
+    echo
+    
+    if [[ -n "$filter" ]]; then
+        printf '\e[35mSearch:\e[0m %s\n' "$filter"
+        printf '\e[2m─────────────────────────────────────────────────────────\e[0m\n'
+        echo
+        
+        filtered=()
+        for group in "${!file_hosts[@]}"; do
+            read -ra hosts <<< "${file_hosts[$group]}"
+            for host in "${hosts[@]}"; do
+                [[ "$host" == *"$filter"* ]] && filtered+=("$host")
+            done
+        done
+        
+        [[ $selected -ge ${#filtered[@]} ]] && selected=$((${#filtered[@]} - 1))
+        [[ $selected -lt 0 ]] && selected=0
+        
+        idx=0
+        for host in "${filtered[@]}"; do
+            if [[ $idx -eq $selected ]]; then
+                printf '\e[35m► %s\e[0m\n' "$host"
+            else
+                printf '  %s\n' "$host"
+            fi
+            ((idx++))
+        done
+        
+        echo
+        printf '\e[2m─────────────────────────────────────────────────────────\e[0m\n'
+        printf '\e[35mEnter\e[0m:SSH  \e[35mAlt+Enter\e[0m:Menu  \e[35mEsc\e[0m:Clear  \e[35mq\e[0m:Quit\n'
+        
+    elif [[ "$view" == "groups" ]]; then
+        printf '\e[35mGroups\e[0m\n'
+        printf '\e[2m─────────────────────────────────────────────────────────\e[0m\n'
+        echo
+        
+        groups=($(printf '%s\n' "${!file_hosts[@]}" | sort))
+        [[ $selected -ge ${#groups[@]} ]] && selected=$((${#groups[@]} - 1))
+        [[ $selected -lt 0 ]] && selected=0
+        
+        idx=0
+        for group in "${groups[@]}"; do
+            read -ra hosts <<< "${file_hosts[$group]}"
+            if [[ $idx -eq $selected ]]; then
+                printf '\e[35m► %s\e[0m \e[2m(%d hosts)\e[0m\n' "$group" "${#hosts[@]}"
+            else
+                printf '  %s \e[2m(%d hosts)\e[0m\n' "$group" "${#hosts[@]}"
+            fi
+            ((idx++))
+        done
+        
+        echo
+        printf '\e[2m─────────────────────────────────────────────────────────\e[0m\n'
+        printf '\e[35mEnter\e[0m:Open  \e[35mType\e[0m:Search  \e[35mq\e[0m:Quit\n'
+        
+    else
+        printf '\e[35mGroup:\e[0m %s\n' "$current_group"
+        printf '\e[2m─────────────────────────────────────────────────────────\e[0m\n'
+        echo
+        
+        read -ra hosts <<< "${file_hosts[$current_group]}"
+        [[ $selected -ge ${#hosts[@]} ]] && selected=$((${#hosts[@]} - 1))
+        [[ $selected -lt 0 ]] && selected=0
+        
+        idx=0
+        for host in "${hosts[@]}"; do
+            if [[ $idx -eq $selected ]]; then
+                printf '\e[35m► %s\e[0m\n' "$host"
+            else
+                printf '  %s\n' "$host"
+            fi
+            ((idx++))
+        done
+        
+        echo
+        printf '\e[2m─────────────────────────────────────────────────────────\e[0m\n'
+        printf '\e[35mEnter\e[0m:SSH  \e[35mAlt+Enter\e[0m:Menu  \e[35mEsc\e[0m:Back  \e[35mq\e[0m:Quit\n'
+    fi
+    
+    IFS= read -rsn1 key
+    case "$key" in
+        '')
+            if [[ -n "$filter" ]]; then
+                stty sane
+                ssh "${filtered[$selected]}"
+            elif [[ "$view" == "groups" ]]; then
+                groups=($(printf '%s\n' "${!file_hosts[@]}" | sort))
+                current_group="${groups[$selected]}"
+                view="hosts"
+                selected=0
+            else
+                stty sane
+                read -ra hosts <<< "${file_hosts[$current_group]}"
+                ssh "${hosts[$selected]}"
+            fi
+            ;;
+        $'\x1b')
+            read -rsn2 -t 0.01 seq
+            case "$seq" in
+                '[A') ((selected > 0)) && ((selected--)) ;;
+                '[B') ((selected++)) ;;
+                '')
+                    if [[ -n "$filter" ]]; then
+                        filter=""
+                        selected=0
+                    elif [[ "$view" == "hosts" ]]; then
+                        view="groups"
+                        selected=0
+                    else
+                        stty sane
+                        if [[ "$view" == "groups" ]]; then
+                            groups=($(printf '%s\n' "${!file_hosts[@]}" | sort))
+                            current_group="${groups[$selected]}"
+                        else
+                            read -ra hosts <<< "${file_hosts[$current_group]}"
+                        fi
+                        clear
+                        printf '\e[35mHost:\e[0m %s\n' "${hosts[$selected]}"
+                        echo
+                        echo "1) SSH"
+                        echo "2) SFTP"
+                        echo "q) Cancel"
+                        echo
+                        read -n 1 -p "Select: " choice
+                        case $choice in
+                            1) ssh "${hosts[$selected]}" ;;
+                            2) sftp "${hosts[$selected]}" ;;
+                        esac
+                    fi
+                    ;;
+            esac
+            ;;
+        q|Q)
+            stty sane
+            clear
+            exit 0
+            ;;
+        $'\x7f')
+            [[ -n "$filter" ]] && filter="${filter:0:-1}"
+            selected=0
+            ;;
+        *)
+            if [[ "$key" =~ [[:print:]] ]]; then
+                filter+="$key"
+                selected=0
+            fi
+            ;;
+    esac
+done

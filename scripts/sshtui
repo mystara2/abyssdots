@@ -57,8 +57,6 @@ while true; do
     
     max_display=$((rows - 8))
     
-    clear
-    
     title=" SSH Manager"
     title_padding=$(( (cols - ${#title} - 4) / 2 ))
     border_line=$(printf '═%.0s' $(seq 1 $((cols - 4))))

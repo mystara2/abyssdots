@@ -3,6 +3,8 @@
 
 ### Information
 
+<img width="1921" height="1081" alt="preview" src="https://github.com/user-attachments/assets/0bbeae2b-cf63-41d5-a436-2b01a141db8f" />
+
 * **Distro**: Arch Linux
 * **WM**: Hyprland
 * **LM**: sddm

@@ -4,7 +4,7 @@
 # Originally built by a friend (possibly used AI for it idk), modified for my use
 #
 
-printf '\033]0;SSH Manager\007'
+printf '\033]0;󰣀 Manager\007'
 
 declare -A file_hosts
 
@@ -59,7 +59,7 @@ while true; do
     
     clear
     
-    title="SSH Manager"
+    title=" SSH Manager"
     title_padding=$(( (cols - ${#title} - 4) / 2 ))
     border_line=$(printf '═%.0s' $(seq 1 $((cols - 4))))
     
@@ -104,7 +104,7 @@ while true; do
         
         echo
         printf '\e[2m%s\e[0m\n' "$(printf '─%.0s' $(seq 1 $((cols - 2))))"
-        printf '\e[35mEnter\e[0m:SSH  \e[35mAlt+Enter\e[0m:Menu  \e[35mEsc\e[0m:Clear  \e[35mq\e[0m:Quit\n'
+        printf '\e[35mEnter\e[0m:󰣀  \e[35mAlt+Enter\e[0m:Menu  \e[35mEsc\e[0m:Clear  \e[35mq\e[0m:Quit\n'
         
     elif [[ "$view" == "groups" ]]; then
         printf '\e[35mGroups\e[0m\n'
@@ -176,7 +176,7 @@ while true; do
         '')
             if [[ -n "$filter" ]]; then
                 stty sane
-                clear && ssh "${filtered[$selected]}"
+                ssh "${filtered[$selected]}"
             elif [[ "$view" == "groups" ]]; then
                 groups=($(printf '%s\n' "${!file_hosts[@]}" | sort))
                 current_group="${groups[$selected]}"

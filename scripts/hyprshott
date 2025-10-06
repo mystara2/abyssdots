@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-output_base="~/Pictures/Screenshots"
+output_base="/home/melissa/Pictures/Screenshots"
 year=$(date +'%Y')
 month=$(date +'%B')
 timestamp=$(date +'%d-%H-%M-%S')

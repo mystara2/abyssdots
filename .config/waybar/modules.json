@@ -34,7 +34,6 @@
             "pulseaudio",
             "bluetooth",
             "custom/ddc_brightness",
-            "network",
             "cpu"
          ]
     },

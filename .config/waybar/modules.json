@@ -175,11 +175,11 @@
         "tooltip-format": "{icon} {desc}",
         "format-icons": {
             "headphone": [" ", " ", " "],
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
+            "hands-free": " ",
+            "headset": " ",
+            "phone": " ",
+            "portable": " ",
+            "car": " ",
             "default": [" ", " ", " "]
         }
     },

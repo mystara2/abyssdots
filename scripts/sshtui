@@ -174,7 +174,7 @@ while true; do
         '')
             if [[ -n "$filter" ]]; then
                 stty sane
-                ssh "${filtered[$selected]}"
+                clear && ssh "${filtered[$selected]}"
             elif [[ "$view" == "groups" ]]; then
                 groups=($(printf '%s\n' "${!file_hosts[@]}" | sort))
                 current_group="${groups[$selected]}"

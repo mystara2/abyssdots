@@ -35,6 +35,7 @@
             "bluetooth",
             "custom/ddc_brightness",
 	    "battery",
+	    //"network",
             "cpu"
          ]
     },

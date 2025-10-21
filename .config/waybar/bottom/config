@@ -1,0 +1,30 @@
+{
+// Header //
+
+    "layer": "top",
+    "position": "bottom",
+    "mod": "dock",
+    "height": 30,
+    "margin-top": 4,
+    "margin-bottom": 4,
+    "margin-left": 10,
+    "margin-right": 10,
+    "exclusive": true,
+    "passthrough": false,
+    "gtk-layer-shell": true,
+
+    "include": ["~/.config/waybar/bottom/modules.json"],
+
+	"modules-left": [
+        "group/media",
+        "group/r-media"
+    ],
+
+	"modules-center": [
+    ],
+
+    "modules-right": [
+        "group/l-tray",
+        "tray"
+    ],
+}

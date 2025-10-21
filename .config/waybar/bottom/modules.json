@@ -1,0 +1,49 @@
+{
+    "group/time": {
+        "orientation": "horizontal",
+        "modules": [
+        "custom/timer"
+         ]
+    },
+    "group/media": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 500,
+            "transition-right-to-left": false
+        },
+        "modules": [
+            "mpris"
+        ]
+    },
+
+    "custom/misc": {
+        "format": " Tray",
+        "tooltip": false
+    },
+
+    "custom/media": {
+        "format": "  Media  ",
+        "tooltip": false
+    },
+
+    "mpris": {
+        "player": "spotify",
+        "format": "{player_icon} {artist}: {title}",
+        "format-paused": "{status_icon} <i>{dynamic}</i>",
+        "player-icons": {
+            "default": "▶",
+            "mpv": "🎵"
+        },
+        "status-icons": {
+            "paused": "⏸"
+        },
+        "max-length": 1000,
+        "tooltip-format": "{player_icon} {artist}: {title} Album: {album}",
+        "interval": 1
+    },
+
+    "tray": {
+        "icon-size": {},
+        "spacing": 5
+    }
+}

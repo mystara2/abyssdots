@@ -32,10 +32,8 @@
         "orientation": "horizontal",
         "modules": [
             "pulseaudio",
-            "bluetooth",
             "custom/ddc_brightness",
-	    "battery",
-	    //"network",
+	        "battery",
             "cpu"
          ]
     },
@@ -43,7 +41,6 @@
     "group/system": {
         "orientation": "horizontal",
         "modules": [
-            "custom/updates",
             "custom/copyq",
             "custom/power"
          ]
@@ -68,14 +65,6 @@
 
     "include": ["~/.config/waybar/dcol_modules/clock.json"],
 
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        }
-    },
-
     "cpu": {
         "interval": 10,
         "format": "󰍛  {usage}%",
@@ -96,35 +85,6 @@
 
     "custom/media": {
         "format": "  Media  ",
-        "tooltip": false
-    },
-    "custom/filemanager": {
-        "format": " ",
-        "on-click": "dolphin",
-        "tooltip": false
-    },
-
-     "custom/terminal": {
-        "format": " ",
-        "on-click": "alacritty",
-        "tooltip": false
-    },
-
-    "custom/editor": {
-        "format": "",
-        "on-click": "geany",
-        "tooltip": false
-    },
-
-    "custom/browser": {
-        "format": " ",
-        "on-click": "firefox",
-        "tooltip": false
-    },
-
-    "custom/obsidian": {
-        "format": " ",
-        "on-click": "obsidian",
         "tooltip": false
     },
 
@@ -205,11 +165,6 @@
         "max-length": 25,
         "escape": true,
         "tooltip": true
-    },
-
-    "tray": {
-        "icon-size": {},
-        "spacing": 5
     },
 
     "custom/updates": {

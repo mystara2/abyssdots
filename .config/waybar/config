@@ -1,5 +1,4 @@
 {
-// Header //
 
     "layer": "top",
     "position": "top",
@@ -13,19 +12,12 @@
     "passthrough": false,
     "gtk-layer-shell": true,
 
-
-    // Load Modules
     "include": ["~/.config/waybar/modules.json"],
-
-// Positions //
 
 	"modules-left": [
         "clock",
         "hyprland/workspaces",
-        "group/r-workspaces",
-        "group/l-media",
-        "group/media",
-        "group/r-media"
+        "group/r-workspaces"
     ],
 
 	"modules-center": [
@@ -35,13 +27,10 @@
     ],
 
     "modules-right": [
-        "group/l-misc",
-        "group/misc",
-        "group/r-misc",
         "group/l-devices",
         "group/devices",
         "group/r-devices",
         "group/l-system",
         "group/system"
-    ],
+    ]
 }

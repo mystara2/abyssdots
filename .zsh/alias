@@ -1,28 +1,45 @@
-# Hyprland
-alias hyprconfig='cd ~/.config/hypr'
+###########
+# Packwiz #
+###########
 
-# Packwiz Stuff
 alias pz='packwiz'
 alias pzmrin='packwiz modrinth install'
 alias pzcfin='packwiz curseforge install'
 alias pzr='packwiz refresh'
-# LSD Stuff
+
+#######
+# LSD #
+#######
+
 alias ls='lsd'
 alias ll='ls -l'
 alias lla='ls -la'
 alias lt='ls --tree'
 alias la='ls -a'
-# Other Things
+
+#######
+# Git #
+#######
+
+alias abyssdots='git -C ~/Development/Github/melissa/abyssdots add ~/Development/Github/melissa/abyssdots && git -C ~/Development/Github/melissa/abyssdots commit -m "Push Dotfiles (Automated)" && git -C ~/Development/Github/melissa/abyssdots push'
+
+lazyg() {
+	git add .
+	git commit -m "$1"
+	git push
+}
+
+#################
+# Other Alias's #
+#################
+
 alias systemctlu='systemctl --user'
 alias pacman='sudo pacman'
 alias vsc='code'
-alias abyssdots='git -C ~/Development/Github/melissa/abyssdots add ~/Development/Github/melissa/abyssdots && git -C ~/Development/Github/melissa/abyssdots commit -m "Push Dotfiles (Automated)" && git -C ~/Development/Github/melissa/abyssdots push'
 alias cat='bat'
 alias clearr='clear && fastfetch'
 alias ssh='clear && sshtui'
 alias vim='nvim'
 alias makemesshkey='ssh-keygen -t rsa -b 4096'
 alias ambientmu='curl nightfall.ysap.sh | bash'
-alias unmountfusion='umount /mnt/fusion/media && umount /mnt/fusion/storage && umount /mnt/fusion/research'
-
 alias spotdll='clear && spotdl --cookie-file "/home/malissa/Downloads/cookies.txt"'

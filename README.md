@@ -19,5 +19,5 @@
 
 
 ***Attributions:***
-* [Avnibilgin](https://github.com/avnibilgin/dotfiles): Base waybar configuration
+* [Avnibilgin](https://github.com/avnibilgin/dotfiles): Original waybar configuration
 * [Claude](https://claude.ai/new): fixing my stupid script mistakes lol *crazy i know, but eh*

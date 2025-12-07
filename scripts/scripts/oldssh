@@ -1,0 +1,85 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# ===== Consts =====
+CFG_MAIN="${HOME}/.ssh/config"
+CFG_DIR="${HOME}/.ssh/config.d"
+SSH_BIN="$(command -v ssh)"
+SFTP_BIN="$(command -v sftp)"
+EDITOR_BIN="${VISUAL:-${EDITOR:-nvim}}"
+C_RESET=$'\033[0m'; C_RED=$'\e[1;91m'; C_LBLUE=$'\033[94m'; C_GREEN=$'\033[92m'; C_AMBER=$'\033[33m'
+KEYS_BLOCK=$'Keys:\n  Enter       → Menu\n  Shift-Tab   → Connect\n  Alt-S       → SFTP\n  Alt-T       → Tmux\n  Ctrl-E      → Edit\n  Ctrl-R      → Reload\n  Ctrl-V/Y    → Scroll Preview'
+
+# ===== Functions =====
+need(){ command -v "$1" >/dev/null 2>&1 || { echo "Missing: $1" >&2; exit 1; }; }
+need fzf; need awk; need sed
+editor_cmd_for_line(){ case "$EDITOR_BIN" in *nano) printf '%q +%s,%s %s' "$EDITOR_BIN" "{3}" "1" "{2}";; *micro) printf '%q +%s %s' "$EDITOR_BIN" "{3}" "{2}";; *) printf '%q +%s %s' "$EDITOR_BIN" "{3}" "{2}";; esac; }
+
+if [[ "${1-}" == "--list" ]]; then
+  mapfile -t FILES < <( { [[ -f "$CFG_MAIN" ]] && printf '%s\n' "$CFG_MAIN"; } ; [[ -d "$CFG_DIR" ]] && ls -1 "$CFG_DIR"/* 2>/dev/null || true )
+  for f in "${FILES[@]}"; do
+    awk -v SRC="$f" '
+      tolower($1)=="match"{inmatch=1; next}
+      tolower($1)=="host"{inmatch=0}
+      inmatch{next}
+      tolower($1)=="host"{for(i=2;i<=NF;i++){h=$i; if(h!="*" && h !~ /[*?!]/) printf "%s\t%s\t%d\n", h,SRC,NR}}
+    ' "$f"
+  done | sort -u
+  exit 0
+
+elif [[ "${1-}" == "--preview" ]]; then
+  host="$2"; src="${3-}"; line="${4-0}"; show_keys="${5-yes}"
+  printf "%bLooking at config for:%b %b%s%b\n\n" "$C_LBLUE" "$C_RESET" "$C_RED" "$host" "$C_RESET"
+
+  if [[ -n "${src:-}" && -f "$src" && "$line" -gt 0 ]]; then
+    awk -v L="$line" -v Y="$C_AMBER" -v R="$C_RESET" '
+      NR < L { next }
+      NR == L { printing=1 }
+      printing {
+        if (NR > L && (tolower($1)=="host" || tolower($1)=="match")) exit
+        printf "%s%s%s\n", Y, $0, R
+      }
+    ' "$src"
+  fi
+  [[ "$show_keys" == "yes" ]] && printf "\n%b%s%b\n" "$C_GREEN" "$KEYS_BLOCK" "$C_RESET"
+  exit 0
+fi
+
+# ===== Main TUI =====
+edit_cmd="$(editor_cmd_for_line)"
+PREVIEW_KEYS="yes"
+if [[ -n "${TMUX-}" ]] && command -v tmux >/dev/null 2>&1; then
+  PREVIEW_KEYS="no"
+  FOOTER_KEYS="${C_GREEN}${KEYS_BLOCK}${C_RESET}"
+  paneid="$(FOOTER_KEYS="$FOOTER_KEYS" tmux split-window -v -p 16 -P -F '#{pane_id}' "bash -lc 'printf \"%s\n\" \"\$FOOTER_KEYS\"; tail -f /dev/null'")"
+  trap 'tmux kill-pane -t "$paneid" >/dev/null 2>&1 || true' EXIT
+fi
+
+mapfile -t OUT < <("$0" --list | fzf \
+  --expect=enter,btab,alt-s,alt-t \
+  --ansi --prompt="SSH > " --height=80% --reverse \
+  --with-nth=1 --delimiter=$'\t' \
+  --preview-window=right,60%,wrap \
+  --preview="$0 --preview {1} {2} {3} $PREVIEW_KEYS" \
+  --bind="ctrl-r:reload($0 --list)" \
+  --bind="ctrl-e:execute($edit_cmd)+reload($0 --list)" \
+  --bind='ctrl-v:preview-half-page-down,ctrl-y:preview-half-page-up'
+)
+[[ ${#OUT[@]} -ge 2 ]] || exit 0
+key="${OUT[0]}"; sel="${OUT[1]}"
+host="$(awk -F'\t' '{print $1}' <<<"$sel")"
+
+case "$key" in
+  btab) exec "$SSH_BIN" "$host" ;;
+  alt-s) exec "$SFTP_BIN" "$host" ;;
+  alt-t) exec "$SSH_BIN" -t "$host" tmux new -A -s main ;;
+  enter|"")
+    action="$(printf "%s\n" "Connect" "SFTP" "Connect (tmux new)" | fzf --prompt="Actions for $host > " --height=30% --reverse || true)"
+    [[ -z "${action:-}" ]] && exit 0
+    case "$action" in
+      "Connect")            exec "$SSH_BIN" "$host" ;;
+      "SFTP")               exec "$SFTP_BIN" "$host" ;;
+      "Connect (tmux new)") exec "$SSH_BIN" -t "$host" tmux new -A -s main ;;
+    esac
+    ;;
+esac

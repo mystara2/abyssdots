@@ -1,0 +1,257 @@
+#!/usr/bin/env bash
+
+printf '\033]0;󰣀 Manager\007'
+
+declare -A file_hosts
+
+parse_ssh_configs() {
+    if [[ -d "$HOME/.ssh/config.d" ]]; then
+        while IFS= read -r file; do
+            local basename=$(basename "$file")
+            local hosts=()
+            while IFS= read -r line; do
+                if [[ $line =~ ^[[:space:]]*Host[[:space:]]+([^*?]+)[[:space:]]*$ ]]; then
+                    local host="${BASH_REMATCH[1]}"
+                    hosts+=("$host")
+                fi
+            done < "$file"
+            if [[ ${#hosts[@]} -gt 0 ]]; then
+                file_hosts["$basename"]="${hosts[*]}"
+            fi
+        done < <(find "$HOME/.ssh/config.d" -type f 2>/dev/null | sort)
+    fi
+    
+    if [[ -f "$HOME/.ssh/config" ]]; then
+        local hosts=()
+        while IFS= read -r line; do
+            if [[ $line =~ ^[[:space:]]*Host[[:space:]]+([^*?]+)[[:space:]]*$ ]]; then
+                hosts+=("${BASH_REMATCH[1]}")
+            fi
+        done < "$HOME/.ssh/config"
+        [[ ${#hosts[@]} -gt 0 ]] && file_hosts["config"]="${hosts[*]}"
+    fi
+}
+
+draw_ui() {
+    local rows=$(tput lines)
+    local cols=$(tput cols)
+    local max_display=$((rows - 8))
+    
+    local title=" SSH Manager"
+    local title_padding=$(( (cols - ${#title} - 4) / 2 ))
+    local border_line=$(printf '═%.0s' $(seq 1 $((cols - 4))))
+    
+    printf '\e[H\e[J'
+    printf '\e[35m╔%s╗\e[0m\n' "$border_line"
+    printf '\e[35m║\e[0m%*s%s%*s\e[35m║\e[0m\n' "$title_padding" "" "$title" "$((cols - ${#title} - title_padding - 4))" ""
+    printf '\e[35m╚%s╝\e[0m\n' "$border_line"
+    echo
+    
+    if [[ -n "$filter" ]]; then
+        printf '\e[35mSearch:\e[0m %s\n' "$filter"
+        printf '\e[2m%s\e[0m\n' "$(printf '─%.0s' $(seq 1 $((cols - 2))))"
+        echo
+        
+        filtered=()
+        for group in "${!file_hosts[@]}"; do
+            read -ra hosts <<< "${file_hosts[$group]}"
+            for host in "${hosts[@]}"; do
+                [[ "$host" == *"$filter"* ]] && filtered+=("$host")
+            done
+        done
+        
+        total=${#filtered[@]}
+        [[ $selected -ge $total ]] && selected=$((total - 1))
+        [[ $selected -lt 0 ]] && selected=0
+        
+        if [[ $selected -ge $((scroll_offset + max_display)) ]]; then
+            scroll_offset=$((selected - max_display + 1))
+        elif [[ $selected -lt $scroll_offset ]]; then
+            scroll_offset=$selected
+        fi
+        
+        end_idx=$((scroll_offset + max_display))
+        [[ $end_idx -gt $total ]] && end_idx=$total
+        
+        for ((i=scroll_offset; i<end_idx; i++)); do
+            if [[ $i -eq $selected ]]; then
+                printf '\e[35m► %s\e[0m\n' "${filtered[$i]}"
+            else
+                printf '  %s\n' "${filtered[$i]}"
+            fi
+        done
+        
+        echo
+        printf '\e[2m%s\e[0m\n' "$(printf '─%.0s' $(seq 1 $((cols - 2))))"
+        printf '\e[35mEnter\e[0m:󰣀  \e[35mm\e[0m:Menu  \e[35mEsc\e[0m:Clear  \e[35mq\e[0m:Quit\n'
+        
+    elif [[ "$view" == "groups" ]]; then
+        printf '\e[35mGroups\e[0m\n'
+        printf '\e[2m%s\e[0m\n' "$(printf '─%.0s' $(seq 1 $((cols - 2))))"
+        echo
+        
+        groups=($(printf '%s\n' "${!file_hosts[@]}" | sort))
+        total=${#groups[@]}
+        [[ $selected -ge $total ]] && selected=$((total - 1))
+        [[ $selected -lt 0 ]] && selected=0
+        
+        if [[ $selected -ge $((scroll_offset + max_display)) ]]; then
+            scroll_offset=$((selected - max_display + 1))
+        elif [[ $selected -lt $scroll_offset ]]; then
+            scroll_offset=$selected
+        fi
+        
+        end_idx=$((scroll_offset + max_display))
+        [[ $end_idx -gt $total ]] && end_idx=$total
+        
+        for ((i=scroll_offset; i<end_idx; i++)); do
+            group="${groups[$i]}"
+            read -ra hosts <<< "${file_hosts[$group]}"
+            if [[ $i -eq $selected ]]; then
+                printf '\e[35m► %s\e[0m \e[2m(%d hosts)\e[0m\n' "$group" "${#hosts[@]}"
+            else
+                printf '  %s \e[2m(%d hosts)\e[0m\n' "$group" "${#hosts[@]}"
+            fi
+        done
+        
+        echo
+        printf '\e[2m%s\e[0m\n' "$(printf '─%.0s' $(seq 1 $((cols - 2))))"
+        printf '\e[35mEnter\e[0m:Open  \e[35mType\e[0m:Search  \e[35mq\e[0m:Quit\n'
+        
+    else
+        printf '\e[35mGroup:\e[0m %s\n' "$current_group"
+        printf '\e[2m%s\e[0m\n' "$(printf '─%.0s' $(seq 1 $((cols - 2))))"
+        echo
+        
+        read -ra hosts <<< "${file_hosts[$current_group]}"
+        total=${#hosts[@]}
+        [[ $selected -ge $total ]] && selected=$((total - 1))
+        [[ $selected -lt 0 ]] && selected=0
+        
+        if [[ $selected -ge $((scroll_offset + max_display)) ]]; then
+            scroll_offset=$((selected - max_display + 1))
+        elif [[ $selected -lt $scroll_offset ]]; then
+            scroll_offset=$selected
+        fi
+        
+        end_idx=$((scroll_offset + max_display))
+        [[ $end_idx -gt $total ]] && end_idx=$total
+        
+        for ((i=scroll_offset; i<end_idx; i++)); do
+            if [[ $i -eq $selected ]]; then
+                printf '\e[35m► %s\e[0m\n' "${hosts[$i]}"
+            else
+                printf '  %s\n' "${hosts[$i]}"
+            fi
+        done
+        
+        echo
+        printf '\e[2m%s\e[0m\n' "$(printf '─%.0s' $(seq 1 $((cols - 2))))"
+        printf '\e[35mEnter\e[0m:SSH  \e[35mm\e[0m:Menu  \e[35mEsc\e[0m:Back  \e[35mq\e[0m:Quit\n'
+    fi
+}
+
+parse_ssh_configs
+
+if [[ ${#file_hosts[@]} -eq 0 ]]; then
+    echo "No SSH hosts found"
+    exit 1
+fi
+
+selected=0
+filter=""
+view="groups"
+current_group=""
+scroll_offset=0
+
+trap 'stty sane; clear' EXIT INT TERM
+
+while true; do
+    draw_ui
+    
+    IFS= read -rsn1 key
+    case "$key" in
+        '')
+            if [[ -n "$filter" ]]; then
+                stty sane
+                clear && ssh "${filtered[$selected]}"
+            elif [[ "$view" == "groups" ]]; then
+                groups=($(printf '%s\n' "${!file_hosts[@]}" | sort))
+                current_group="${groups[$selected]}"
+                view="hosts"
+                selected=0
+                scroll_offset=0
+            else
+                stty sane
+                read -ra hosts <<< "${file_hosts[$current_group]}"
+                clear && ssh "${hosts[$selected]}"
+            fi
+            ;;
+        m|M)
+            stty sane
+            if [[ -n "$filter" ]]; then
+                clear
+                printf '\e[35mHost:\e[0m %s\n' "${filtered[$selected]}"
+                echo
+                echo "1) SSH"
+                echo "2) SFTP"
+                echo "q) Cancel"
+                echo
+                read -n 1 -p "Select: " choice
+                case $choice in
+                    1) clear && ssh "${filtered[$selected]}" ;;
+                    2) clear && sftp "${filtered[$selected]}" ;;
+                esac
+            else
+                read -ra hosts <<< "${file_hosts[$current_group]}"
+                clear
+                printf '\e[35mHost:\e[0m %s\n' "${hosts[$selected]}"
+                echo
+                echo "1) SSH"
+                echo "2) SFTP"
+                echo "q) Cancel"
+                echo
+                read -n 1 -p "Select: " choice
+                case $choice in
+                    1) clear && ssh "${hosts[$selected]}" ;;
+                    2) clear && sftp "${hosts[$selected]}" ;;
+                esac
+            fi
+            ;;
+        $'\x1b')
+            read -rsn2 -t 0.01 seq
+            case "$seq" in
+                '[A') ((selected > 0)) && ((selected--)) ;;
+                '[B') ((selected++)) ;;
+                '')
+                    if [[ -n "$filter" ]]; then
+                        filter=""
+                        selected=0
+                        scroll_offset=0
+                    elif [[ "$view" == "hosts" ]]; then
+                        view="groups"
+                        selected=0
+                        scroll_offset=0
+                    fi
+                    ;;
+            esac
+            ;;
+        q|Q)
+            stty sane
+            clear
+            exit 0
+            ;;
+        $'\x7f')
+            [[ -n "$filter" ]] && filter="${filter:0:-1}"
+            selected=0
+            scroll_offset=0
+            ;;
+        *)
+            if [[ "$key" =~ [[:print:]] ]]; then
+                filter+="$key"
+                selected=0
+                scroll_offset=0
+            fi
+            ;;
+    esac
+done

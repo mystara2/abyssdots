@@ -15,7 +15,7 @@
 
 
 ***Contributions:***
-***Open to help when it comes to scripts n stuff, and if config is hardcoding my stuff explicitly (ex /home/malissa and not $HOME or ~), otherwise PRs or issues will be closed.***
+***Open to help when it comes to scripts n stuff, and if config is hardcoding my stuff explicitly (ex /home/melissa and not $HOME or ~), otherwise PRs or issues will be closed.***
 
 
 ***Attributions:***

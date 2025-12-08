@@ -26,6 +26,11 @@
         "tooltip": false
     },
 
+    "clock": {
+        "format": "{:%I:%M %p   |   %d/%m}",
+        "tooltip-format": "{:%A, %B %d, %Y\n%I:%M:%S %p}"
+    },
+
     "mpris": {
         "player": "spotify",
         "format": "{player_icon} {artist}: {title}",

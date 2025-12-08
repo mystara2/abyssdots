@@ -99,19 +99,6 @@ Other
     background: @taskbar;
 }
 
-
-
-#clock {
-    font-family: "Futura Bk BT";
-    color: @workspace_fg;
-    background: @workspace_bg;
-    font-weight: bold;
-    font-size: 14px;
-    color: @clock;
-    padding: 2px 10px 0px 10px;
-    opacity: 1;
-}
-
 #misc {
     background: @misc;
 }

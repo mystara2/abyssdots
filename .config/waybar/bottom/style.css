@@ -1,10 +1,5 @@
 @import '../../../.cache/wal/colors-waybar.css';
 
-/*
-Colors
-*/
-
-/* waybar area/group colors*/
 @define-color apps rgba(0, 0, 0, 0.6);
 @define-color quicklinks rgba(0, 0, 0, 0.4);
 @define-color workspaces rgba(0, 0, 0, 0.6);
@@ -14,23 +9,15 @@ Colors
 @define-color timer rgba(0, 0, 0, 0.4);
 @define-color devices rgba(0, 0, 0, 0.6);
 @define-color system rgba(0, 0, 0, 0.4);
-/* workspace text colors */
 @define-color workspace_fg @foreground;
 @define-color act_wrk_fg rgba(0, 0, 0, 1);
 @define-color use_wrk_fg @color5;
-/* workspace button-background colors */
 @define-color workspace_bg rgba(0, 0, 0, 0.6);
 @define-color act_wrk_bg @foreground;
-/* taskbar button-background colors */
 @define-color taskbar_bg rgba(255, 255, 255, 0.2);
-/* updates-widget icon+text colors */
 @define-color updates_green #a3be8c;
 @define-color updates_yellow #ff9a3c;
 @define-color updates_red #dc2f2f;
-
-/*
-Waybar / main settings
-*/
 
 * {
     font-family: "Fira Sans SemiBold";
@@ -44,9 +31,10 @@ window#waybar {
     background: transparent;
 }
 
-/*
-Other
-*/
+#clock {
+    color: @workspace_fg;
+    background: @workspace_bg;
+}
 
 #mpris, #custom-media {
     color: @workspace_fg;
@@ -57,21 +45,14 @@ Other
     background: @tray;
 }
 
-/*
-    ┏┓┏┓┳┳┓┳┳┓┏┓┳┓  ┏┓┏┓┳┓┳┓┳┳┓┏┓       ┓  ┳┳┓┏┓┳┓┏┓┳┳┓
-    ┃ ┃┃┃┃┃┃┃┃┃┃┃┃  ┃┃┣┫┃┃┃┃┃┃┃┃┓  ┏┓┏┓┏┫  ┃┃┃┣┫┣┫┃┓┃┃┃
-    ┗┛┗┛┛ ┗┛ ┗┗┛┛┗  ┣┛┛┗┻┛┻┛┻┛┗┗┛  ┗┻┛┗┗┻  ┛ ┗┛┗┛┗┗┛┻┛┗
-*/
-
 #mpris,
+#clock,
 #tray {
     padding: 0px 10px;
 }
 
-/*
-Powerline Menu
-*/
-
+#l-clock,
+#r-clock,
 #l-tray,
 #r-tray,
 #l-media,
@@ -80,7 +61,6 @@ Powerline Menu
     min-height: 0px;
 }
 
-/* Left side slashes */
 
 #l-tray {
     border-left: 15 solid transparent;
@@ -94,7 +74,11 @@ Powerline Menu
     margin-left: 0;
 }
 
-/* Right side slashes */
+#l-clock {
+    border-left: 15 solid transparent;
+    border-bottom: 30 solid @apps;
+    margin-left: 0;
+}
 
 #r-tray {
     border-left: 15 solid @tray;
@@ -104,6 +88,12 @@ Powerline Menu
 
 #r-media {
     border-left: 15 solid @tray;
+    border-bottom: 30 solid transparent;
+    margin-right: 0;
+}
+
+#r-clock {
+    border-left: 15 solid @apps;
     border-bottom: 30 solid transparent;
     margin-right: 0;
 }

@@ -21,6 +21,9 @@
     ],
 
 	"modules-center": [
+        "group/l-clock",
+	    "clock",
+        "group/r-clock"
     ],
 
     "modules-right": [

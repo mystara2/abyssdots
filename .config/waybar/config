@@ -15,7 +15,6 @@
     "include": ["~/.config/waybar/modules.json"],
 
 	"modules-left": [
-        "clock",
         "hyprland/workspaces",
         "group/r-workspaces"
     ],

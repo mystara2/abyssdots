@@ -1,2 +1,85 @@
 [global]
-monitor = DP-1
+    monitor = DP-1
+    follow = none
+    width = 270
+    height = 300
+    origin = bottom-right
+    offset = 24x70
+    scale = 0
+    notification_limit = 0
+    indicate_hidden = yes
+    shrink = no
+    transparency = 1
+    separator_height = 3
+    padding = 16
+    horizontal_padding = 16
+    frame_width = 1
+    frame_color = "#3C3083"
+    separator_color = auto
+    sort = yes
+    idle_threshold = 120
+    font = DejaVuSansMono Nerd Font Regular 9.5
+    line_height = 0
+    markup = full
+
+    format = "<b>%s</b>\n<span foreground='#f5f5f5'>%b</span>"
+    alignment = left
+    vertical_alignment = center
+     
+    show_age_threshold = 60
+
+    word_wrap = yes
+
+    ellipsize = middle
+    ignore_newline = no
+    stack_duplicates = true
+    hide_duplicate_count = false
+    show_indicators = yes
+
+    icon_position = left
+    max_icon_size = 32
+    icon_path = /usr/share/icons/Paper/16x16/status/:/usr/share/icons/Paper/16x16/devices/:/usr/share/icons/Paper/16x16/apps/:/usr/share/pixmaps/
+    ### History ###
+
+    sticky_history = yes
+    history_length = 20
+
+    dmenu = /usr/bin/dmenu -p dunst:
+    browser = /usr/bin/firefox -new-tab
+    always_run_script = true
+
+    title = Dunst
+    class = Dunst
+
+
+    corner_radius = 6
+    force_xinerama = false
+
+    mouse_left_click = close_current
+    mouse_middle_click = do_action
+    mouse_right_click = close_all
+
+[experimental]
+    per_monitor_dpi = false
+
+[urgency_low]
+
+    background = "#110d1e"
+    foreground = "#3C3083"
+    frame_color = "#3C3083"
+    timeout = 5
+    icon = /usr/share/icons/Arc-X-D/status/16/dialog-information.png
+
+[urgency_normal]
+    background = "#110d1e"
+    foreground = "#3C3083"
+    frame_color = "#3C3083"
+    timeout = 5
+    icon = /usr/share/icons/Arc-X-D/status/16/dialog-question.png
+
+[urgency_critical]
+    background = "#110d1e"
+    foreground = "#3C3083"
+    frame_color = "#3C3083"
+    timeout = 120
+    icon = /usr/share/icons/Arc-X-D/status/16/dialog-warning.png

@@ -66,7 +66,7 @@ copy_configs() {
 echo "[Abyssdots] Installing Dependenices for: Abyss Dotfiles by Mystara"
 echo "[Abyssdots] Installing Pacman available packages"
 
-sudo pacman -Syu waybar neovim wofi hyprpaper hyprlock qt6ct lsd bat zsh zsh-completions git
+sudo pacman -Syu waybar neovim wofi hyprpaper hyprlock qt6ct lsd bat zsh zsh-completions git copyq
 
 echo "[Abyssdots] Installed Pacman available packages!"
 echo "[Abyssdots] Setup paru then installing AUR available packages"

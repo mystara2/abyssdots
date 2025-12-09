@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+playerctl --player=spotify metadata --format '{{artist}}|{{album}}|{{title}}' --follow |
+while IFS='|' read -r artist album title; do
+    notify-send -a "Spotify Now Playing:" \
+      -i /usr/share/icons/hicolor/512x512/apps/spotify-launcher.png \
+      "Now Playing:" "Artist: $artist
+Album:  $album
+Track:  $title"
+done
+

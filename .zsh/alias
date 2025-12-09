@@ -21,7 +21,7 @@ alias la='ls -a'
 # Git #
 #######
 
-alias abyssdots='git -C ~/Development/Github/melissa/abyssdots add ~/Development/Github/melissa/abyssdots && git -C ~/Development/Github/melissa/abyssdots commit -m "Push Dotfiles (Automated)" && git -C ~/Development/Github/melissa/abyssdots push'
+alias abyssdots='git -C ~/dotfiles add ~/dotfiles && git -C ~/dotfiles commit -m "Push Dotfiles (Automated)" && git -C ~/dotfiles push'
 
 lazyg() {
 	git add .
@@ -42,4 +42,4 @@ alias ssh='clear && sshtui'
 alias vim='nvim'
 alias makemesshkey='ssh-keygen -t rsa -b 4096'
 alias ambientmu='curl nightfall.ysap.sh | bash'
-alias spotdll='clear && spotdl --cookie-file "/home/malissa/Downloads/cookies.txt"'
+alias jmp='flatpak run com.github.iwalton3.jellyfin-media-player'

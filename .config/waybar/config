@@ -25,16 +25,13 @@
 	"modules-center": [
         "group/l-clock",
         "clock",
-        "group/r-clock",
-        "group/l-window",
-        "hyprland/window",
-        "group/r-window",
-        "group/l-tray",
-        "tray",
-        "group/r-tray"
+        "group/r-clock"
     ],
 
     "modules-right": [
+        "group/l-misc",
+        "group/misc",
+        "group/r-misc",
         "group/l-devices",
         "group/devices",
         "group/r-devices",

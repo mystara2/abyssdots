@@ -1,7 +1,6 @@
 # Paths & Exports
 export SCRIPTS="$HOME/scripts"
 export PATH="$PATH:$SCRIPTS"
-export PATH=$PATH:/home/malissa/.spicetify
 export JAVA_HOME=$HOME/java/adoptium/jdk/17
 export PATH=$JAVA_HOME/bin:$PATH
 export EDITOR=nvim
@@ -14,14 +13,17 @@ HISTSIZE=5000
 SAVEHIST=100000
 
 if [[ $- == *i* ]]; then
-    customfetch
+    fastfetch
 fi
 
 # Other Files
-source ~/.zsh/.zshalias
-source ~/.zsh/.zshkeys
-source ~/.zsh/.prompt
+source ~/.zsh/alias
+source ~/.zsh/zshkeys
+source ~/.zsh/prompt
+source ~/.zsh/functions
 
 if [[ -o interactive ]] && [[ -n $DISPLAY || -n $WAYLAND_DISPLAY ]] && [[ -f ~/.cache/wal/colors.sh ]]; then
     source ~/.cache/wal/colors.sh
 fi
+
+export PATH=$PATH:/home/melissa/.spicetify

@@ -89,7 +89,9 @@ Workspaces
 Other
 */
 
-#window {
+#clock,
+#window,
+#tray {
     color: @workspace_fg;
     background: @workspace_bg;
 }
@@ -134,6 +136,8 @@ Other
 #cpu,
 #memory,
 #mpris,
+#tray,
+#clock,
 /* group "system" widgets */
 #custom-updates,
 #custom-power,
@@ -157,6 +161,10 @@ Other
 Powerline Menu
 */
 
+#l-clock,
+#r-clock,
+#l-tray,
+#r-tray,
 #l-window,
 #r-window,
 #l-workspaces,
@@ -176,6 +184,18 @@ Powerline Menu
 /* Left side slashes */
 
 #l-window {
+    border-left: 15 solid transparent;
+    border-bottom: 30 solid @apps;
+    margin-left: 0;
+}
+
+#l-tray {
+    border-left: 15 solid transparent;
+    border-bottom: 30 solid @apps;
+    margin-left: 0;
+}
+
+#l-clock {
     border-left: 15 solid transparent;
     border-bottom: 30 solid @apps;
     margin-left: 0;
@@ -239,6 +259,24 @@ Powerline Menu
 
 #r-devices {
     border-left: 15 solid @devices;
+    border-bottom: 30 solid transparent;
+    margin-right: 0;
+}
+
+#r-clock {
+    border-left: 15 solid @apps;
+    border-bottom: 30 solid transparent;
+    margin-right: 0;
+}
+
+#r-tray {
+    border-left: 15 solid @apps;
+    border-bottom: 30 solid transparent;
+    margin-right: 0;
+}
+
+#r-clock {
+    border-left: 15 solid @apps;
     border-bottom: 30 solid transparent;
     margin-right: 0;
 }

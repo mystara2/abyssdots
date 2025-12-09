@@ -28,6 +28,14 @@
             "tray"
         ]
     },
+    "clock": {
+        "format": "{:%I:%M %p   |   %d/%m}",
+        "tooltip-format": "{:%A, %B %d, %Y\n%I:%M:%S %p}"
+    },
+    "tray": {
+        "icon-size": {},
+        "spacing": 5
+    },
     "group/devices": {
         "orientation": "horizontal",
         "modules": [
@@ -179,7 +187,7 @@
     },
 
     "hyprland/window": {
-        "format": "  {}",
+        "format": "    {}",
         "separate-outputs": true,
         "max-length": 1000,
         "rewrite": {

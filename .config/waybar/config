@@ -16,13 +16,22 @@
 
 	"modules-left": [
         "hyprland/workspaces",
-        "group/r-workspaces"
+        "group/r-workspaces",
+        "group/l-media",
+        "group/media",
+        "group/r-media"
     ],
 
 	"modules-center": [
+        "group/l-clock",
+        "clock",
+        "group/r-clock",
         "group/l-window",
         "hyprland/window",
-        "group/r-window"
+        "group/r-window",
+        "group/l-tray",
+        "tray",
+        "group/r-tray"
     ],
 
     "modules-right": [

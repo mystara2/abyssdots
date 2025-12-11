@@ -1,5 +1,18 @@
+
+####
+#
+# Git Functions
+#
+####
+
 rcp() {
    pz refresh
+   git add .
+   git commit -m "$1"
+   git push
+}
+
+gcom() {
    git add .
    git commit -m "$1"
    git push

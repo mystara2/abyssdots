@@ -1,4 +1,4 @@
-@import '/home/malissa/.cache/wal/colors-wofi.css';
+@import '/home/melissa/.cache/wal/colors-wofi.css';
 
 * {
   font-family: monospace;
@@ -10,14 +10,13 @@ window {
   border: 2px solid @color5;
   background-color: rgba(0, 0, 0, 0.45);
   border-radius: 12px;
-  backdrop-filter: blur(10px);
 }
 
 #input {
   margin: 12px;
   border: 2px solid @color3;
   color: @color4;
-  ackground-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   padding: 12px;
 }

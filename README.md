@@ -3,7 +3,7 @@
 
 ### Information
 
-<img width="1921" height="1081" alt="preview" src="https://github.com/user-attachments/assets/0bbeae2b-cf63-41d5-a436-2b01a141db8f" />
+<img width="1921" height="1081" alt="preview" src="https://github.com/mystara2/abyssdots/blob/632ab8f3e31bd794f02c03d6a527221f53d23dc1/preview.png"/>
 
 * **Distro**: Arch Linux
 * **WM**: Hyprland

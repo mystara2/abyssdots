@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+feishin_status=$(playerctl --player=Feishin status 2>/dev/null)
+spotify_status=$(playerctl --player=spotify status 2>/dev/null)
+
+if [[ "$feishin_status" == "Playing" ]]; then
+    metadata=$(playerctl --player=Feishin metadata --format '{{artist}}|{{album}}|{{title}}')
+    IFS='|' read -r artist album title <<< "$metadata"
+
+    notify-send -a "Feishin Now Playing" \
+        -i /usr/share/icons/hicolor/512x512/apps/spotify-launcher.png \
+        "Now Playing:" "Artist: $artist
+Album:  $album
+Track:  $title"
+
+    echo "$title by $artist"
+    exit
+fi
+
+if [[ "$spotify_status" == "Playing" ]]; then
+    metadata=$(playerctl --player=spotify metadata --format '{{artist}}|{{album}}|{{title}}')
+    IFS='|' read -r artist album title <<< "$metadata"
+
+    notify-send -a "Spotify Now Playing" \
+        -i /usr/share/icons/hicolor/512x512/apps/spotify-launcher.png \
+        "Now Playing:" "Artist: $artist
+Album:  $album
+Track:  $title"
+
+    echo "$title by $artist"
+    exit
+fi

@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+######################################################################################################################################################################################
+#                                                                                    INFORMATION                                                                                     #
+# Use functions for everything so its easier to manage if more things get added, ex add something to pacman updating, youd have to comment out 2 things if u wanna stop its updates. #
+######################################################################################################################################################################################
+
+# Update pacman stuff
+upd_pacman() {
+   pacman -Syu
+}
+
+# Update AUR packages
+upd_paru() {
+   paru -Syu
+}
+
+upd_yay() {
+   yay -Syu
+}
+
+# Update flatpak
+
+upd_flatpak() {
+   flatpak update -y
+}
+
+# Stuff to do afterwards
+
+vencord_update() {
+   sh -c "$(curl -sS https://vencord.dev/install.sh)"
+}
+
+############
+# COMMANDS #
+############
+upd_pacman # NATIVE
+upd_paru # AUR
+upd_yay # AUR
+upd_flatpak # External
+vencord_update # fix discord if it updates

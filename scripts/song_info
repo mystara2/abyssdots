@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 
-song_info=$(playerctl --player spotify metadata --format '{{artist}} - {{title}}')
+spotify_status=$(playerctl --player spotify status 2>/dev/null)
+feishin_status=$(playerctl --player Feishin status 2>/dev/null)
 
-echo "$song_info"
-
+   if [[ $feishin_status == Playing ]]; then
+      feishin_info=$(playerctl --player Feishin metadata --format '{{title}} by {{artist}}')
+      echo "$feishin_info"
+   elif [[ $spotify_status == Playing ]]; then
+      spotify_info=$(playerctl --player spotify metadata --format '{{title}} by {{artist}}')
+      echo "$spotify_info"
+   fi

@@ -53,6 +53,12 @@
             "key": " ",
             "keyColor": "33" 
         },
+        {
+            "type": "command",
+            "key": "󱂇 ",
+            "text": "myip",
+            "keyColor": "33"
+        },
 	{
             "type": "command",
             "key": " ",

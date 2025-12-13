@@ -2,7 +2,7 @@
 Description=Spotify Now Playing Notification
 
 [Service]
-ExecStart=%h/scripts/spotify_notif
+ExecStart=%h/scripts/song_notif
 Restart=always
 RestartSec=1
 

@@ -7,7 +7,6 @@ setup_symlinks() {
     ln -sf "$HOME/dev/github/mystara/Abyssdots/.config/systemd/user/waybar.service" "$HOME/.config/systemd/user/waybar.service"
     ln -sf "$HOME/dev/github/mystara/Abyssdots/.config/systemd/user/waybar2.service" "$HOME/.config/systemd/user/waybar2.service"
     systemctl --user enable --now waybar
-    systemctl --user enable --now waybar2
 
     # Configs
 
@@ -37,7 +36,6 @@ copy_configs() {
     cp -r "$HOME/dev/github/mystara/Abyssdots/.config/systemd/user/waybar.service" "$HOME/.config/systemd/user/waybar.service"
     cp -r "$HOME/dev/github/mystara/Abyssdots/.config/systemd/user/waybar2.service" "$HOME/.config/systemd/user/waybar2.service"
     systemctl --user enable --now waybar
-    systemctl --user enable --now waybar2
 
     rm -rf ~/.config/hypr/
     mkdir -vp ~/.config/hypr/pconfigs
@@ -66,7 +64,7 @@ copy_configs() {
 echo "[Abyssdots] Installing Dependenices for: Abyss Dotfiles by Mystara"
 echo "[Abyssdots] Installing Pacman available packages"
 
-sudo pacman -Syu waybar neovim wofi hyprpaper hyprlock qt6ct lsd bat zsh zsh-completions git copyq
+sudo pacman -Syu --needed waybar neovim wofi hyprpaper hyprlock qt6ct lsd bat zsh zsh-completions git copyq keepassxc 
 
 echo "[Abyssdots] Installed Pacman available packages!"
 echo "[Abyssdots] Setup paru then installing AUR available packages"
@@ -76,7 +74,7 @@ git clone https://aur.archlinux.org/paru.git
 cd paru
 makepkg -si
 
-paru -S waypaper python-pywal16 wlogout python-spicetify
+paru -S waypaper python-pywal16 wlogout python-spicetify floorp-bin
 
 echo "[Abyssdots] Installed AUR available packages!"
 echo "[Abyssdots] Setting up git repos...."

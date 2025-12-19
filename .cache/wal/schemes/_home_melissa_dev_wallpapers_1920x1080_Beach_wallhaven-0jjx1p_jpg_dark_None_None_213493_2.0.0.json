@@ -1,0 +1,28 @@
+{
+    "checksum": "e30702f23d7d9d93493d783a280c1233",
+    "wallpaper": "/home/melissa/dev/wallpapers/1920x1080/Beach/wallhaven-0jjx1p.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#160909",
+        "foreground": "#c4c1c1",
+        "cursor": "#c4c1c1"
+    },
+    "colors": {
+        "color0": "#160909",
+        "color1": "#777777",
+        "color2": "#888888",
+        "color3": "#989898",
+        "color4": "#A8A8A8",
+        "color5": "#B7B7B7",
+        "color6": "#C6C6C6",
+        "color7": "#c4c1c1",
+        "color8": "#6c5959",
+        "color9": "#777777",
+        "color10": "#888888",
+        "color11": "#989898",
+        "color12": "#A8A8A8",
+        "color13": "#B7B7B7",
+        "color14": "#C6C6C6",
+        "color15": "#c4c1c1"
+    }
+}

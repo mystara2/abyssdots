@@ -1,0 +1,28 @@
+{
+    "checksum": "364dd88a279f31ede77f7cc4133c6e2e",
+    "wallpaper": "/home/melissa/dev/wallpapers/1920x1080/Mountains/wallhaven-13egvg.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#0e211b",
+        "foreground": "#c2c7c6",
+        "cursor": "#c2c7c6"
+    },
+    "colors": {
+        "color0": "#0e211b",
+        "color1": "#7A9097",
+        "color2": "#9DA4A4",
+        "color3": "#93A8B5",
+        "color4": "#CEBDA8",
+        "color5": "#A5B7C5",
+        "color6": "#B9C8D5",
+        "color7": "#c2c7c6",
+        "color8": "#5d726b",
+        "color9": "#7A9097",
+        "color10": "#9DA4A4",
+        "color11": "#93A8B5",
+        "color12": "#CEBDA8",
+        "color13": "#A5B7C5",
+        "color14": "#B9C8D5",
+        "color15": "#c2c7c6"
+    }
+}

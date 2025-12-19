@@ -1,0 +1,28 @@
+{
+    "checksum": "012e6910639949ec3a452e0e85fde4a3",
+    "wallpaper": "/home/melissa/dev/wallpapers/1920x1080/Winter/wallhaven-0j37wp.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#080d14",
+        "foreground": "#c1c2c4",
+        "cursor": "#c1c2c4"
+    },
+    "colors": {
+        "color0": "#080d14",
+        "color1": "#423D71",
+        "color2": "#3A4357",
+        "color3": "#374671",
+        "color4": "#454D6B",
+        "color5": "#384C8B",
+        "color6": "#3F4F9B",
+        "color7": "#c1c2c4",
+        "color8": "#585f6b",
+        "color9": "#423D71",
+        "color10": "#3A4357",
+        "color11": "#374671",
+        "color12": "#454D6B",
+        "color13": "#384C8B",
+        "color14": "#3F4F9B",
+        "color15": "#c1c2c4"
+    }
+}

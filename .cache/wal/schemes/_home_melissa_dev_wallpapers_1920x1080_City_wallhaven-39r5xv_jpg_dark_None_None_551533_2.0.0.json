@@ -1,0 +1,28 @@
+{
+    "checksum": "af50f86dcfcf5fcf9cad6f78ea970e94",
+    "wallpaper": "/home/melissa/dev/wallpapers/1920x1080/City/wallhaven-39r5xv.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#131313",
+        "foreground": "#c4c4c4",
+        "cursor": "#c4c4c4"
+    },
+    "colors": {
+        "color0": "#131313",
+        "color1": "#A45E3C",
+        "color2": "#957066",
+        "color3": "#C5906F",
+        "color4": "#827A8A",
+        "color5": "#A3909D",
+        "color6": "#D7A79D",
+        "color7": "#c4c4c4",
+        "color8": "#6f5a5a",
+        "color9": "#A45E3C",
+        "color10": "#957066",
+        "color11": "#C5906F",
+        "color12": "#827A8A",
+        "color13": "#A3909D",
+        "color14": "#D7A79D",
+        "color15": "#c4c4c4"
+    }
+}
